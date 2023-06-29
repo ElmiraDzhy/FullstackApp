@@ -6,6 +6,8 @@ const messageSchema = new Schema({
     author: {
         type: Schema.Types.ObjectId,
         required: [true, 'Author is required field for message'],
+        //?
+        ref: 'User'
     },
     body: {
         type: String,
