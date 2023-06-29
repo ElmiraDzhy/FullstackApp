@@ -7,12 +7,14 @@ const chatSchema = new Schema({
         type: String,
         required: [true, 'Name is required field for chat'],
     },
-    members: {
+    members: [{
         type: Schema.Types.ObjectId,
-    },
-    messages: {
+        ref: 'User'
+    }],
+    messages: [{
         type: Schema.Types.ObjectId,
-    },
+        ref: 'Message'
+    },]
 
 });
 
