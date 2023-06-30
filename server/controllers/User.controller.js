@@ -3,11 +3,7 @@ const bcrypt = require('bcrypt');
 
 module.exports.signUp = async (req, res, next) => {
     try {
-        const userData = {
-            ...req.body
-        };
-        delete userData.password;
-        const newUser = await User.create(userData);
+        const newUser = await User.create(req.body);
         res.status(201).send({data: newUser});
     } catch (err) {
         next(err)
