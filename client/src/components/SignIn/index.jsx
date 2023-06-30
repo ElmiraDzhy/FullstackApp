@@ -1,5 +1,6 @@
 import React from 'react';
 import {Field, Form, Formik} from "formik";
+import {signIn} from "../../api/index";
 
 function SignIn (props) {
     const initialValues = {
@@ -7,7 +8,8 @@ function SignIn (props) {
         password: ''
     }
     const submitHandler = (values, actions) => {
-        console.log(values);
+        signIn(values)
+            .then(result => console.log(result));
     }
 
     return (
