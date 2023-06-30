@@ -2,6 +2,7 @@ import React from 'react';
 import {Field, Form, Formik} from "formik";
 import {signUp} from "../../api/index";
 import {format} from "date-fns";
+import styles from './SignUp.module.css';
 
 function SignUp (props) {
     const initialValues = {
@@ -23,13 +24,13 @@ function SignUp (props) {
             initialValues={initialValues}
         >
             {(formikProps) => (
-                <Form>
-                    <Field name="firstName" placeholder="Type your name"/>
-                    <Field name="lastName" placeholder="Type your surname"/>
-                    <Field name="email" placeholder="Type your email"/>
-                    <Field name="password" placeholder="Type your password"/>
-                    <Field name="birthday" placeholder="Type your birthday" type="date"/>
-                    <button type="submit">Submit</button>
+                <Form className={styles['form']}>
+                    <Field className={styles['form-input']} name="firstName" placeholder="Type your name"/>
+                    <Field className={styles['form-input']} name="lastName" placeholder="Type your surname"/>
+                    <Field className={styles['form-input']} name="email" placeholder="Type your email"/>
+                    <Field className={styles['form-input']} name="password" placeholder="Type your password"/>
+                    <Field className={styles['form-input']} name="birthday" placeholder="Type your birthday" type="date"/>
+                    <button className={styles['btn']} type="submit">Submit</button>
                 </Form>
             )}
 

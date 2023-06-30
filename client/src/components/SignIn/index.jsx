@@ -1,6 +1,7 @@
 import React from 'react';
 import {Field, Form, Formik} from "formik";
 import {signIn} from "../../api/index";
+import styles from "./SignIn.module.css";
 
 function SignIn (props) {
     const initialValues = {
@@ -20,10 +21,10 @@ function SignIn (props) {
         >
             {
                 (formikProps) => (
-                    <Form>
-                        <Field name="email" placeholder="type email"/>
-                        <Field name="password" placeholder="type pass"/>
-                        <button type="submit">Submit</button>
+                    <Form className={styles['form']}>
+                        <Field className={styles['form-input']} name="email" placeholder="type email"/>
+                        <Field className={styles['form-input']} name="password" placeholder="type pass"/>
+                        <button className={styles['btn']} type="submit">Submit</button>
 
                     </Form>
                 )

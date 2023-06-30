@@ -1,0 +1,44 @@
+body {
+    background: rgb(0, 254, 255);
+    background: linear-gradient(90deg, rgba(0, 254, 255, 1) 0%, rgba(9, 49, 121, 0.6783088235294117) 48%, rgba(54, 10, 80, 0.6783088235294117) 100%);
+}
+
+.main-wrapper {
+    position: relative;
+    width: 20vw;
+    padding: 5%;
+    border: 1px solid grey;
+    border-radius: 5%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.44);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form * {
+    margin-top: 2%;
+}
+
+.btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    width: 70px;
+    height: 30px;
+
+    border: 2px solid darkblue;
+    background-color: white;
+    font-weight: bold;
+    color: darkblue;
+}
+
+.btn:hover, .btn:active {
+    cursor: pointer;
+    background-color: rgba(100, 125, 255, 0.61);
+    color: white;
+}

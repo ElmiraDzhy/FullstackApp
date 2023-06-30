@@ -1,0 +1,36 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+}
+
+.form-input{
+    margin: auto 0;
+    height: 35px;
+    padding: 0 10px;
+    border-radius: 3px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid #0077ff;
+    outline: none;
+}
+
+.btn{
+    width: 200px;
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 0 auto;
+    background-color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.btn:hover, .btn:active{
+    cursor: pointer;
+    border: 1px solid darkblue;
+    color: darkblue;
+
+}
