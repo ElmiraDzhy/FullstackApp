@@ -2,8 +2,11 @@ const {User} = require('../models');
 
 module.exports.signUp = async (req, res, next) => {
     try {
-        const {body} = req;
-        const newUser = await User.create(body);
+        const userData = {
+            ...req.body
+        };
+        delete userData.password;
+        const newUser = await User.create(userData);
         res.status(201).send({data: newUser});
     } catch (err) {
         next(err)
