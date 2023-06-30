@@ -9,7 +9,8 @@ function SignIn (props) {
     }
     const submitHandler = (values, actions) => {
         signIn(values)
-            .then(result => console.log(result));
+            .then(({data: {data}}) => console.log(data))
+
     }
 
     return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Field, Form, Formik} from "formik";
 import {signUp} from "../../api/index";
+import {format} from "date-fns";
 
 function SignUp (props) {
     const initialValues = {
@@ -8,12 +9,12 @@ function SignUp (props) {
         lastName: '',
         email: '',
         password: '',
-        birthday: ''
+        birthday: format(new Date(), 'yyyy-MM-dd')
     }
     const submitHandler = (values, actions) => {
         console.log(values);
         signUp(values)
-            .then(result => console.log(result))
+            .then(({data: {data}}) => console.log(data))
     }
 
     return (
@@ -27,7 +28,7 @@ function SignUp (props) {
                     <Field name="lastName" placeholder="Type your surname"/>
                     <Field name="email" placeholder="Type your email"/>
                     <Field name="password" placeholder="Type your password"/>
-                    <Field name="birthday" placeholder="Type your birthday"/>
+                    <Field name="birthday" placeholder="Type your birthday" type="date"/>
                     <button type="submit">Submit</button>
                 </Form>
             )}
