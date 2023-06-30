@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import SignIn from '../components/SignIn';
-import SignUp from '../components/SignUp';
+import SignIn from '../../components/SignIn';
+import SignUp from '../../components/SignUp';
+import styles from './Home.module.css'
 
 function Home (props) {
     const [view, setView] = useState(true);
@@ -11,8 +12,8 @@ function Home (props) {
     const btnText = view ? "SignUp" : "SignIn";
 
     return (
-        <div>
-            <button onClick={clickHandler}>{btnText}</button>
+        <div className={styles['main-wrapper']}>
+            <button className={styles['btn']}  onClick={clickHandler}>{btnText}</button>
             {view ? <SignIn/> : <SignUp/>}
         </div>
     )
