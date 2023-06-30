@@ -1,6 +1,6 @@
 const {User} = require('../models');
 const bcrypt = require('bcrypt');
-
+const NotFoundError = require('../errors/NotFoundError');
 module.exports.signUp = async (req, res, next) => {
     try {
         const newUser = await User.create(req.body);
@@ -17,7 +17,7 @@ module.exports.signIn = async (req, res, next) => {
             email
         });
         if (!foundUser) {
-            throw new Error('User not found');
+            throw new NotFoundError('User not found');
         }
         const result = await bcrypt.compare(password, foundUser.passwordHash);
         res.status(200).send({data: "success"});

@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const CryptError = require('../errors/CryptError');
 
 const SALT_ROUND = 1;
 
@@ -8,6 +9,6 @@ module.exports.hashPass = async (req, res, next) => {
         req.body.passwordHash = await bcrypt.hash(password, SALT_ROUND);
         next();
     } catch (err) {
-        next(err);
+        next(new CryptError(err.message));
     }
 }
