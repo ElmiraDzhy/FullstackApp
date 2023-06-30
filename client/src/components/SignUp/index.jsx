@@ -1,5 +1,6 @@
 import React from 'react';
 import {Field, Form, Formik} from "formik";
+import {signUp} from "../../api/index";
 
 function SignUp (props) {
     const initialValues = {
@@ -11,6 +12,8 @@ function SignUp (props) {
     }
     const submitHandler = (values, actions) => {
         console.log(values);
+        signUp(values)
+            .then(result => console.log(result))
     }
 
     return (
