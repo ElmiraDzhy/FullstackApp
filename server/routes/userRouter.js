@@ -5,6 +5,7 @@ const {hashPass} = require('../middlewares/hashPass');
 
 userRouter.post('/sign-up', hashPass, UserController.signUp); //signUp
 userRouter.post('/sign-in', UserController.signIn); //signIn
+userRouter.post('/auth', UserController.auth); //test
 userRouter.get('/:userId', UserController.getOne);
 userRouter.delete('/:userId', UserController.deleteOne);
 

@@ -47,3 +47,11 @@ module.exports.deleteOne = async (req, res, next) => {
         next(err)
     }
 }
+
+module.exports.auth = async (req, res, next) => {
+    try{
+        console.log(req.headers)
+    }catch(err){
+        next(err)
+    }
+}
