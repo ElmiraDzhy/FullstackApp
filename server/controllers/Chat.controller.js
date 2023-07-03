@@ -12,7 +12,7 @@ module.exports.createChat = async (req, res, next) => {
 
 module.exports.addUserToChat = async (req, res, next) => {
     try {
-        const {params: {chatId, userId}} = req;
+        const {params: {chatId}, payload: {userId}} = req;
         const result = await Chat.updateOne(
             {_id: chatId},
             {
@@ -54,7 +54,7 @@ module.exports.addMessage = async (req, res, next) => {
 
 module.exports.getAllUserChats = async (req, res, next) => {
     try {
-        const {params: {userId}} = req;
+        const {payload: {userId}} = req;
         const userChats = await Chat.find({
             members: userId
         })
