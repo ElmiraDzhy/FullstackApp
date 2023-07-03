@@ -13,9 +13,8 @@ function SignUp (props) {
         birthday: format(new Date(), 'yyyy-MM-dd')
     }
     const submitHandler = (values, actions) => {
-        console.log(values);
-        signUp(values)
-            .then(({data: {data}}) => console.log(data))
+        props.sendData(signUp(values));
+
     }
 
     return (
@@ -29,7 +28,8 @@ function SignUp (props) {
                     <Field className={styles['form-input']} name="lastName" placeholder="Type your surname"/>
                     <Field className={styles['form-input']} name="email" placeholder="Type your email"/>
                     <Field className={styles['form-input']} name="password" placeholder="Type your password"/>
-                    <Field className={styles['form-input']} name="birthday" placeholder="Type your birthday" type="date"/>
+                    <Field className={styles['form-input']} name="birthday" placeholder="Type your birthday"
+                           type="date"/>
                     <button className={styles['btn']} type="submit">Submit</button>
                 </Form>
             )}
