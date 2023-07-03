@@ -1,6 +1,7 @@
 const {User} = require('../models');
 const bcrypt = require('bcrypt');
 const NotFoundError = require('../errors/NotFoundError');
+const InvalidDataError = require('../errors/InvalidDataError');
 const {createToken} = require('../services/tokenService');
 
 module.exports.signUp = async (req, res, next) => {
@@ -23,13 +24,15 @@ module.exports.signIn = async (req, res, next) => {
         if (!foundUser) {
             throw new NotFoundError('User not found');
         }
-        const result = await bcrypt.compare(password, foundUser.passwordHash);
+        const auth = await bcrypt.compare(password, foundUser.passwordHash);
+        if (!auth) {
+            throw new InvalidDataError('Invalid credentials');
+        }
         const token = await createToken({email, userId: foundUser._id});
 
         res.status(200).send({token});
-
     } catch (err) {
-        next(err)
+        next(err);
     }
 }
 
