@@ -1,6 +1,8 @@
 const {User} = require('../models');
 const bcrypt = require('bcrypt');
 const NotFoundError = require('../errors/NotFoundError');
+const {createToken, verifyToken} = require('../services/tokenService');
+
 module.exports.signUp = async (req, res, next) => {
     try {
         const newUser = await User.create(req.body);
@@ -49,9 +51,29 @@ module.exports.deleteOne = async (req, res, next) => {
 }
 
 module.exports.auth = async (req, res, next) => {
-    try{
-        console.log(req.headers)
-    }catch(err){
+    try {
+        const {body: {email}} = req;
+        const user = await User.findOne({
+            email
+        });
+        const token = await createToken({email, userId: user._id});
+        res.status(200).send({
+            token
+        });
+    } catch (err) {
         next(err)
+    }
+}
+
+module.exports.checkToken = async (req, res, next) => {
+    try {
+        const {headers: {authorization}} = req;
+        const [, token] = authorization.split(' ');
+        const result = await verifyToken(token);
+        res.status(200).send({
+            data: result
+        })
+    } catch (err) {
+        next(err);
     }
 }
