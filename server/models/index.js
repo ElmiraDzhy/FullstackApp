@@ -5,6 +5,7 @@ const CONFIG = db[process.env.NODE_ENV || "development"];
 const User = require('./User');
 const Chat = require('./Chat');
 const Message = require('./Message');
+const RefreshToken = require('./RefreshToken');
 
 mongoose.connect(`mongodb://${CONFIG.host}:${CONFIG.port}/${CONFIG.database}`)
     .catch((err) => {
@@ -16,5 +17,6 @@ mongoose.connect(`mongodb://${CONFIG.host}:${CONFIG.port}/${CONFIG.database}`)
 module.exports = {
     User,
     Chat,
-    Message
+    Message,
+    RefreshToken
 }
