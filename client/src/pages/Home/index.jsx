@@ -11,7 +11,7 @@ function Home (props) {
         response.then(({data: {data, token}}) => {
             localStorage.setItem('token', token); // sync operation, the part of WEB API
             props.sendUser(data);
-            navigate('/messanger');
+            navigate('/messenger');
         })
     }
 
