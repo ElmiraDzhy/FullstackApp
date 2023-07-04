@@ -1,32 +1,42 @@
 const jwt = require('jsonwebtoken');
 const {promisify} = require('node:util');
+const {
+    ACCESS_SECRET_VALUE,
+    REFRESH_SECRET_VALUE,
+    ACCESS_TIME,
+    REFRESH_TIME
+} = require('../constants');
 
 const promisifyJWTSing = promisify(jwt.sign);
 const promisifyJWTVerify = promisify(jwt.verify);
 
-const ACCESS_SECRET_VALUE = 'super-secret';
-const REFRESH_SECRET_VALUE = 'super-secret-refresh';
-const ACCESS_TIME = 60;
-const REFRESH_TIME = 60 * 60;
-
-module.exports.createAccessToken = async ({userId, email}) => {
-    const token = await promisifyJWTSing({userId, email}, ACCESS_SECRET_VALUE, {
-        expiresIn: ACCESS_TIME
-    });
-    return token;
+const tokenConfig = {
+    access: {
+        secret: ACCESS_SECRET_VALUE,
+        time: ACCESS_TIME
+    },
+    refresh: {
+        secret: REFRESH_SECRET_VALUE,
+        time: REFRESH_TIME
+    }
+}
+const createToken = (payload, {time, secret}) => {
+    return promisifyJWTSing({
+        userId,
+        email
+    }, secret, expiresIn);
 }
 
-module.exports.createRefreshToken = async ({userId, email}) => {
-    const token = await promisifyJWTSing({userId, email}, REFRESH_SECRET_VALUE, {
-        expiresIn: REFRESH_TIME
-    });
-    return token;
+const verifyToken = async (token, secret) => promisifyJWTVerify(token, secret);
+
+
+module.createTokenPair = async (payload) => {
+    return {
+        accessToken: createToken(payload, tokenConfig.access),
+        refreshToken: createToken(payload, tokenConfig.refresh)
+    }
 }
 
-module.exports.verifyAccessToken = async (token) => {
-    return promisifyJWTVerify(token, ACCESS_SECRET_VALUE);
-}
 
-module.exports.verifyRefreshToken = async (token) => {
-    return promisifyJWTVerify(token, REFRESH_SECRET_VALUE);
-}
+module.exports.verifyAccessToken = async (token) => verifyToken(token, tokenConfig.access)
+module.exports.verifyRefreshToken = async (token) => verifyToken(token, tokenConfig.refresh)
