@@ -8,8 +8,10 @@ module.exports.signUp = async (req, res, next) => {
     try {
         const newUser = await User.create(req.body);
         const token = await createToken({email: req.body.email, userId: newUser._id});
-
-        res.status(201).send({data: newUser, token});
+        const readyUser = Object.assign(({}, newUser._doc));
+        delete readyUser.passwordHash;
+        res.status(200).send({data: readyUser, token});
+        res.status(201).send({data: readyUser, token});
     } catch (err) {
         next(err)
     }
@@ -29,8 +31,9 @@ module.exports.signIn = async (req, res, next) => {
             throw new InvalidDataError('Invalid credentials');
         }
         const token = await createToken({email, userId: foundUser._id});
-
-        res.status(200).send({data: foundUser, token});
+        const readyUser = Object.assign(({}, foundUser._doc));
+        delete readyUser.passwordHash;
+        res.status(200).send({data: readyUser, token});
     } catch (err) {
         next(err);
     }
