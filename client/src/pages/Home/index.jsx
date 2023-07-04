@@ -9,7 +9,7 @@ function Home (props) {
     const navigate = useNavigate();
     const sendApiRequest = (response) => {
         response.then(({data: {data, token}}) => {
-            console.log(token)
+            localStorage.setItem('token', token); // sync operation, the part of WEB API
             props.sendUser(data);
             navigate('/messanger');
         })
