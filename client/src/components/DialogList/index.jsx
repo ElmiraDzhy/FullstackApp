@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {getUserChats} from "../../api";
 import {useNavigate} from "react-router-dom";
-
+import styles from './DialogList.module.css'
 function DialogList (props) {
     const [list, setList] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem('token');
         getUserChats(token)
             .then(({data: {data}}) => {
                 setList(data);
@@ -22,7 +22,7 @@ function DialogList (props) {
 
 
     return (
-        <div>
+        <div className={styles.container}>
             <ul>
                 (first dialog here)
                 {list && list.map(mapList)}
