@@ -30,7 +30,7 @@ module.exports.signIn = async (req, res, next) => {
         }
         const token = await createToken({email, userId: foundUser._id});
 
-        res.status(200).send({token});
+        res.status(200).send({data: foundUser, token});
     } catch (err) {
         next(err);
     }

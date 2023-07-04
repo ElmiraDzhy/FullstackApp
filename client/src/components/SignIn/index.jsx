@@ -21,7 +21,7 @@ function SignIn (props) {
                 (formikProps) => (
                     <Form className={styles['form']}>
                         <Field className={styles['form-input']} name="email" placeholder="type email"/>
-                        <Field className={styles['form-input']} name="password" placeholder="type pass"/>
+                        <Field className={styles['form-input']} name="password" placeholder="type pass" type="password"/>
                         <button className={styles['btn']} type="submit">Submit</button>
 
                     </Form>
