@@ -4,7 +4,7 @@ import DialogList from '../../components/DialogList';
 import MessageArea from '../../components/MessageArea';
 import styles from './Dashboard.module.css';
 
-function Dashboard () {
+function Dashboard (props) {
     return (
         <main className={styles.main}>
             <DialogList/>
@@ -13,7 +13,7 @@ function Dashboard () {
                 <MessageArea/>
             </section>
         </main>
-    )
+    );
 }
 
 export default Dashboard;

@@ -1,8 +1,10 @@
 import React from 'react';
+import styles from './MessageArea.module.css'
 
-function MessageArea () {
+function MessageArea (props) {
     return (
-        <div>
+        <div className={styles.container}>
+            (here will be message)
 
         </div>
     )
