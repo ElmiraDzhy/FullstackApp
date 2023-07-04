@@ -25,6 +25,7 @@ function DialogList (props) {
         <div className={styles.container}>
             <ul>
                 (first dialog here)
+
                 {list && list.map(mapList)}
             </ul>
         </div>
