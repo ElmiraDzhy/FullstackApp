@@ -7,8 +7,7 @@ function DialogList (props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        getUserChats(token)
+        getUserChats()
             .then(({data: {data}}) => {
                 setList(data);
             })
