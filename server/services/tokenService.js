@@ -20,7 +20,7 @@ const tokenConfig = {
         time: REFRESH_TIME
     }
 }
-const createToken = (payload, {time, secret}) => {
+const createToken = (userId, email, {time, secret}) => {
     return promisifyJWTSing({
         userId,
         email
@@ -30,7 +30,7 @@ const createToken = (payload, {time, secret}) => {
 const verifyToken = async (token, secret) => promisifyJWTVerify(token, secret);
 
 
-module.createTokenPair = async (payload) => {
+module.exports.createTokenPair = async (payload) => {
     return {
         accessToken: createToken(payload, tokenConfig.access),
         refreshToken: createToken(payload, tokenConfig.refresh)
