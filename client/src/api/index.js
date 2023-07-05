@@ -6,8 +6,19 @@ const httpClient = axios.create({
 
 export const signIn = async (userData) => await httpClient.post('/users/sign-in', userData);
 export const signUp = async (userData) => await httpClient.post('/users/sign-up', userData);
-export const getUserChats = async (token) => await httpClient.get('/chats/all', {
-    headers: {
-        'Authorization': `Bearer ${token}`
-    }
+export const getUserChats = async () => await httpClient.get('/chats/all', {
+
 });
+
+httpClient.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            config.headers = {
+                ...config.headers,
+                Authorization: `Bearer ${token}`
+            }
+        }
+        return config;
+    },
+    (error) => Promise.reject(error));
