@@ -9,11 +9,14 @@ const TokenService = require('../services/tokenService');
 module.exports.signUp = async (req, res, next) => {
     try {
         const newUser = await User.create(req.body);
-        const token = await TokenService.createTokenPair({email: req.body.email, userId: newUser._id});
+        const tokens = await TokenService.createTokenPair({email: req.body.email, userId: newUser._id});
         const readyUser = Object.assign({}, newUser._doc);
         delete readyUser.passwordHash;
-        res.status(200).send({data: readyUser, token});
-        res.status(201).send({data: readyUser, token});
+        const added = await RefreshToken.create({
+            token: tokens.refreshToken,
+            user: newUser._id
+        })
+        res.status(201).send({data: readyUser, tokens});
     } catch (err) {
         next(err)
     }
@@ -32,10 +35,14 @@ module.exports.signIn = async (req, res, next) => {
         if (!auth) {
             throw new InvalidDataError('Invalid credentials');
         }
-        const token = await TokenService.createTokenPair({email, userId: foundUser._id});
+        const tokens = await TokenService.createTokenPair({email, userId: foundUser._id});
+        const added = await RefreshToken.create({
+            token: tokens.refreshToken,
+            user: foundUser._id
+        })
         const readyUser = Object.assign({}, foundUser._doc);
         delete readyUser.passwordHash;
-        res.status(200).send({data: readyUser, token});
+        res.status(200).send({data: readyUser, tokens});
     } catch (err) {
         next(err);
     }
