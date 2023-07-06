@@ -4,16 +4,20 @@ const httpClient = axios.create({
     baseURL: 'http://localhost:5000/api',
 }); //create instance
 
+// auth api
+
 export const signIn = async (userData) => await httpClient.post('/users/sign-in', userData);
 export const signUp = async (userData) => await httpClient.post('/users/sign-up', userData);
-export const getUserChats = async () => await httpClient.get('/chats/all', {});
+export const getUserData = async () => await httpClient.get('/users/');
+export const deleteUser = async () => await httpClient.delete('/users/');
 export const logOut = async () => {
     localStorage.clear();
 };
 
 export const refreshSession = async () => {
     const refreshToken = localStorage.getItem('refreshToken');
-    const {data} = await httpClient.post('/users/refresh', {refreshToken});
+    const data = await httpClient.post('/users/refresh', {refreshToken});
+    console.log(data)
     return data;
 };
 
@@ -56,9 +60,19 @@ httpClient.interceptors.response.use(
         }
         else if (error.response.status === 401) {
             // back into authorization page
-            return logOut()
+             logOut()
         }
         else {
             return Promise.reject(error);
         }
     });
+
+// chat api
+// todo: fix this api:
+export const createChat = async (chatData) => await httpClient.post('/chats/', chatData);
+export const addMessage = async (messageData, chatId) => await httpClient.post(`/chats/${chatId}`, messageData);
+export const getChatWithMembers = async () => await httpClient.get('/chats/users', {});
+export const getCurrentChat = async () => await httpClient.get('/chats/', {});
+export const addUserToChat = async (chatId) => await httpClient.put(`/${chatId}/`, {});
+export const getUserChats = async () => await httpClient.get('/chats/all', {});
+
