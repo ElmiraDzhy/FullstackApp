@@ -8,8 +8,7 @@ function Home (props) {
     const [view, setView] = useState(true);
     const navigate = useNavigate();
     const sendApiRequest = (response) => {
-        response.then(({data: {data, token}}) => {
-            localStorage.setItem('token', token); // sync operation, the part of WEB API
+        response.then(({data: {data}}) => {
             props.sendUser(data);
             navigate('/messenger');
         })
