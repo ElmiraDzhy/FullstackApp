@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const NotFoundError = require('../errors/NotFoundError');
 const InvalidDataError = require('../errors/InvalidDataError');
 const TokenError = require('../errors/TokenError');
-
 const TokenService = require('../services/tokenService');
 
 module.exports.signUp = async (req, res, next) => {
@@ -14,7 +13,7 @@ module.exports.signUp = async (req, res, next) => {
         delete readyUser.passwordHash;
         const added = await RefreshToken.create({
             token: tokens.refreshToken,
-            user: newUser._id
+            userId: newUser._id
         })
         res.status(201).send({data: readyUser, tokens});
     } catch (err) {
@@ -38,7 +37,7 @@ module.exports.signIn = async (req, res, next) => {
         const tokens = await TokenService.createTokenPair({email, userId: foundUser._id});
         const added = await RefreshToken.create({
             token: tokens.refreshToken,
-            user: foundUser._id
+            userId: foundUser._id
         })
         const readyUser = Object.assign({}, foundUser._doc);
         delete readyUser.passwordHash;
@@ -93,12 +92,12 @@ module.exports.refreshSession = async (req, res, next) => {
             if (rtFromDB) {
                 //remove from bd
                 const removed = await rtFromDB.deleteOne();
-                const tokens = TokenService.createTokenPair({userId: foundUser._id, email: foundUser.email});
+                const tokens = await TokenService.createTokenPair({userId: foundUser._id, email: foundUser.email});
 
                 //write new tokens into bd
                 const add = await RefreshToken.create({
                     token: tokens.refreshToken,
-                    user: foundUser._id
+                    userId: foundUser._id
                 })
                 res.status(200).send({
                     tokens
