@@ -1,4 +1,5 @@
 import axios from "axios";
+import history from "../history";
 
 const httpClient = axios.create({
     baseURL: 'http://localhost:5000/api',
@@ -12,6 +13,8 @@ export const getUserData = async () => await httpClient.get('/users/');
 export const deleteUser = async () => await httpClient.delete('/users/');
 export const logOut = async () => {
     localStorage.clear();
+    //перенаправляємо юзера логінитись
+    history.replace('/');
 };
 
 export const refreshSession = async () => {
@@ -60,7 +63,7 @@ httpClient.interceptors.response.use(
         }
         else if (error.response.status === 401) {
             // back into authorization page
-             logOut()
+             return logOut()
         }
         else {
             return Promise.reject(error);
