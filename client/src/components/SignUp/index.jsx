@@ -3,7 +3,10 @@ import {Field, Form, Formik} from "formik";
 import {signUp} from "../../api/index";
 import {format} from "date-fns";
 import styles from './SignUp.module.css';
+import {connect} from "react-redux";
+import {signUpUserRequest} from "../../actions/actionCreators";
 
+//todo add signUpUserRequest
 function SignUp (props) {
     const initialValues = {
         firstNme: '',
@@ -13,8 +16,7 @@ function SignUp (props) {
         birthday: format(new Date(), 'yyyy-MM-dd')
     }
     const submitHandler = (values, actions) => {
-        props.sendData(signUp(values));
-
+        props.signUpUserRequest(values);
     }
 
     return (
@@ -33,9 +35,8 @@ function SignUp (props) {
                     <button className={styles['btn']} type="submit">Submit</button>
                 </Form>
             )}
-
         </Formik>
     )
 }
 
-export default SignUp;
+export default connect(null, {signUpUserRequest})(SignUp);

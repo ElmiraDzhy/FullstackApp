@@ -4,7 +4,7 @@ import {addMessageRequest} from "../../actions/actionCreators";
 import styles from './MessageArea.module.css'
 
 function MessageArea (props) {
-    const {currentChat, addMessage} = props;
+    const {currentChat, addMessageRequest} = props;
     const [value, setValue] = useState('');
 
     const submitHandler = (e) => {
@@ -28,7 +28,7 @@ function MessageArea (props) {
 }
 
 const mapDispatchToProps = {
-    addMessage
+    addMessageRequest
 }
 const mapStateToProps = ({currentChat}) => ({currentChat});
 

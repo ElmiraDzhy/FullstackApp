@@ -38,7 +38,36 @@ function rootReducer (state = initialState, action) {
             }
         }
         //
-        case ACTION_TYPES.ADD_MESSAGE_ERROR: {
+        case ACTION_TYPES.ADD_MESSAGE_ERROR:
+        case ACTION_TYPES.LOGIN_USER_ERROR : {
+            return {
+                ...state,
+                errors: action.error
+            }
+        }
+        //
+        case ACTION_TYPES.LOGIN_USER_SUCCESS: {
+            return {
+                ...state,
+                user: action.data
+            }
+        }
+        //
+        case ACTION_TYPES.LOGIN_USER_REQUEST: {
+            return {
+                ...state,
+                isFetching: true
+            }
+        }
+        //
+        case ACTION_TYPES.SIGNUP_USER_SUCCESS: {
+            return {
+                ...state,
+                user: action.data
+            }
+        }
+        //
+        case ACTION_TYPES.SIGNUP_USER_ERROR: {
             return {
                 ...state,
                 errors: action.error
