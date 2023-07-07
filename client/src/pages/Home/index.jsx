@@ -9,7 +9,7 @@ function Home (props) {
     const navigate = useNavigate();
     const sendApiRequest = (response) => {
         response.then(({data: {data}}) => {
-            props.sendUser(data);
+            // props.sendUser(data);
             navigate('/messenger');
         })
     }
