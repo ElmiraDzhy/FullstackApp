@@ -1,13 +1,13 @@
 import * as API from '../api';
 import {put} from 'redux-saga/effects';
 import * as actionCreators from "../actions/actionCreators";
-import {ca} from "date-fns/locale";
+import history from "../history";
 
 export function* loginUserSaga (action) {
     try {
         const {data: {data}} = yield API.signIn(action.payload);
-        const action = actionCreators.loginUserSuccess(data);
-        yield put(action);
+        yield put(actionCreators.loginUserSuccess(data));
+        history.push('/messenger');
     } catch (err) {
         const errorAction = actionCreators.loginUserError(err);
         yield put(errorAction);
@@ -17,8 +17,9 @@ export function* loginUserSaga (action) {
 export function* signUpUserSaga (action) {
     try {
         const {data: {data}} = yield API.signUp(action.payload);
-        const action = actionCreators.signUpUserSuccess(data);
-        yield put(action);
+        yield put(actionCreators.signUpUserSuccess(data));
+        history.push('/messenger');
+
     } catch (err) {
         yield put(actionCreators.signUpUserError(err));
     }

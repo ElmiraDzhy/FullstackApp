@@ -6,14 +6,14 @@ export const loginUserRequest = (payload) => ({
     payload
 });
 
-export const loginUserSuccess = (payload) => ({
+export const loginUserSuccess = (data) => ({
     type: ACTION_TYPES.LOGIN_USER_SUCCESS,
-    payload
+    data
 });
 
-export const loginUserError = (payload) => ({
+export const loginUserError = (error) => ({
     type: ACTION_TYPES.LOGIN_USER_ERROR,
-    payload
+    error
 });
 
 export const signUpUserRequest = (payload) => ({
@@ -21,14 +21,14 @@ export const signUpUserRequest = (payload) => ({
     payload
 });
 
-export const signUpUserSuccess = (payload) => ({
+export const signUpUserSuccess = (data) => ({
     type: ACTION_TYPES.SIGNUP_USER_SUCCESS,
-    payload
+    data
 });
 
-export const signUpUserError= (payload) => ({
+export const signUpUserError= (error) => ({
     type: ACTION_TYPES.SIGNUP_USER_ERROR,
-    payload
+    error
 });
 
 //chats
