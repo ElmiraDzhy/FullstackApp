@@ -13,20 +13,38 @@ const initialState = {
         members: [],
         messages: []
     },
+    isFetching: false,
+    errors: null
 }
 
 function rootReducer (state = initialState, action) {
     console.log(action)
     switch (action.type) {
-        case ACTION_TYPES.ADD_MESSAGE: {
-            return ({
+        //
+        case ACTION_TYPES.ADD_MESSAGE_REQUEST: {
+            return {
+                ...state,
+                isFetching: true
+            }
+        }
+        //
+        case ACTION_TYPES.ADD_MESSAGE_SUCCESS: {
+            return {
                 ...state,
                 currentChat: {
                     ...state.currentChat,
-                    messages: state.messages.concat(action.payload)
+                    messages: state.currentChat.messages.concat(action.data)
                 }
-            })
+            }
         }
+        //
+        case ACTION_TYPES.ADD_MESSAGE_ERROR: {
+            return {
+                ...state,
+                errors: action.error
+            }
+        }
+        //
         default: {
             return {...state}
         }

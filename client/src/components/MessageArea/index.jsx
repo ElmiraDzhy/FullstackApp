@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {connect} from "react-redux";
-import {addMessage} from "../../actions/actionCreators";
+import {addMessageRequest} from "../../actions/actionCreators";
 import styles from './MessageArea.module.css'
 
 function MessageArea (props) {
@@ -13,7 +13,7 @@ function MessageArea (props) {
             body: value,
             chatId: currentChat.id
         }
-        addMessage(newMessage);
+        addMessageRequest(newMessage);
     };
     const changeHandler = ({target: value}) => setValue(value);
 
