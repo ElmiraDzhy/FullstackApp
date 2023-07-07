@@ -5,7 +5,7 @@ import styles from "./SignIn.module.css";
 import {connect} from "react-redux";
 import {loginUserRequest} from "../../actions/actionCreators";
 
-// todo add loginUserRequest
+
 function SignIn (props) {
     const initialValues = {
         email: '',

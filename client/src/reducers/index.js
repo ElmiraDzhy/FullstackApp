@@ -1,18 +1,9 @@
 import ACTION_TYPES from './../actions/types';
 
 const initialState = {
-    user: {
-        firstName: 'John',
-        lastName: 'Doe',
-        id: 147
-    },
+    user: null,
     chatList: [],
-    currentChat: {
-        id: 76786998,
-        name: 'First chat',
-        members: [],
-        messages: []
-    },
+    currentChat: null,
     isFetching: false,
     errors: null
 }
@@ -39,27 +30,15 @@ function rootReducer (state = initialState, action) {
         }
         //
         case ACTION_TYPES.ADD_MESSAGE_ERROR:
-        case ACTION_TYPES.LOGIN_USER_ERROR : {
+        case ACTION_TYPES.LOGIN_USER_ERROR :
+        case ACTION_TYPES.SIGNUP_USER_ERROR: {
             return {
                 ...state,
                 errors: action.error
             }
         }
         //
-        case ACTION_TYPES.LOGIN_USER_SUCCESS: {
-            return {
-                ...state,
-                user: action.data
-            }
-        }
-        //
-        case ACTION_TYPES.LOGIN_USER_REQUEST: {
-            return {
-                ...state,
-                isFetching: true
-            }
-        }
-        //
+        case ACTION_TYPES.LOGIN_USER_SUCCESS:
         case ACTION_TYPES.SIGNUP_USER_SUCCESS: {
             return {
                 ...state,
@@ -67,12 +46,10 @@ function rootReducer (state = initialState, action) {
             }
         }
         //
-        case ACTION_TYPES.SIGNUP_USER_ERROR: {
-            return {
-                ...state,
-                errors: action.error
-            }
-        }
+
+
+        //
+
         //
         default: {
             return {...state}
