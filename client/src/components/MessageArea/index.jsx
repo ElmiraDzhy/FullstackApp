@@ -11,17 +11,19 @@ function MessageArea (props) {
         e.preventDefault();
         const newMessage = {
             body: value,
-            chatId: currentChat.id
+            chatId: currentChat._id
         }
         addMessageRequest(newMessage);
     };
-    const changeHandler = ({target: value}) => setValue(value);
+    const changeHandler = ({target: {value}}) => {
+        setValue(value);
+    };
 
     return (
         <div className={styles.container}>
             <form onSubmit={submitHandler}>
-                <textarea name={'message'} value={value} onChange={changeHandler}/>
-                <button type={'submit'}></button>
+                <textarea name={'message'} className={styles['text-area']} value={value} onChange={changeHandler}/>
+                <button type={'submit'} className={styles.btn}></button>
             </form>
         </div>
     )
