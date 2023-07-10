@@ -1,7 +1,13 @@
 .message{
-
+    width: 25vw;
+    border: 1px solid lightgrey;
+    padding: 1%;
+    border-radius: 5px;
+    background-color: #90c7ee;
+    margin-bottom: 3%;
 }
 
 .author-message{
-
+    background-color: lightblue;
+    align-self: flex-end;
 }
