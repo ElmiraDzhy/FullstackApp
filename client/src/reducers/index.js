@@ -45,7 +45,6 @@ function rootReducer (state = initialState, action) {
         }
         //
         case ACTION_TYPES.LOGIN_USER_SUCCESS:
-
         case ACTION_TYPES.SIGNUP_USER_SUCCESS: {
             return {
                 ...state,

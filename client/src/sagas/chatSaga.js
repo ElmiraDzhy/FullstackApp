@@ -25,8 +25,6 @@ export function* getAllChatsSaga (action){
 
 export function* getCurrentChatWithMessages (action){
     try{
-        console.log('action:')
-        console.log(action)
         const {data: {data}} = yield API.getCurrentChat(action.payload);
         yield put(actionCreators.getCurrentChatSuccess(data));
     }catch(err){

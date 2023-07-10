@@ -9,7 +9,6 @@ const {chatList,  getCurrentChatRequest} = props;
 
 
     const changeCurrentChat = (chatId) => {
-        console.log(`chatId: ${chatId}`)
         //generate action for changing currentChat
         getCurrentChatRequest(chatId)
     }
@@ -34,7 +33,6 @@ const {chatList,  getCurrentChatRequest} = props;
 const mapStateToProps = ({chatList, currentChat}) => ({chatList, currentChat});
 
 const mapDispatchToProps = {
-
     getCurrentChatRequest
 }
 
