@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 function Chat (props) {
     const {currentChat} = props;
+    console.log(currentChat)
     return (
         <div className={styles['chat-container']}>
             {currentChat && currentChat.messages.map(m => <li>{m.body}</li> )}

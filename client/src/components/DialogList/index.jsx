@@ -1,15 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {getAllUserChatRequest, getCurrentChatRequest} from "../../actions/actionCreators";
+import { getCurrentChatRequest} from "../../actions/actionCreators";
 import {useNavigate} from "react-router-dom";
 import styles from './DialogList.module.css'
 import {connect} from "react-redux";
 function DialogList (props) {
-const {chatList, getAllUserChatRequest, getCurrentChatRequest} = props;
+const {chatList,  getCurrentChatRequest} = props;
     const navigate = useNavigate();
 
-    useEffect(() => {
-        getAllUserChatRequest();
-    }, []);
 
     const changeCurrentChat = (chatId) => {
         //generate action for changing currentChat
@@ -31,7 +28,7 @@ const {chatList, getAllUserChatRequest, getCurrentChatRequest} = props;
 const mapStateToProps = ({chatList}) => chatList;
 
 const mapDispatchToProps = {
-    getAllUserChatRequest,
+
     getCurrentChatRequest
 }
 

@@ -1,4 +1,4 @@
-const {User, RefreshToken} = require('../models');
+const {User, RefreshToken, Chat} = require('../models');
 const bcrypt = require('bcrypt');
 const NotFoundError = require('../errors/NotFoundError');
 const InvalidDataError = require('../errors/InvalidDataError');
@@ -54,7 +54,17 @@ module.exports.getOne = async (req, res, next) => {
         if(!userInstance){
             throw new NotFoundError('User not found');
         }
-        res.status(200).send({data: userInstance});
+        //if user exist - find all his chat and send it all together
+        const userChats = await Chat.find({
+            members: userId
+        })
+
+        const readyUser = Object.assign({}, userInstance._doc);
+        delete readyUser.passwordHash;
+        res.status(200).send({data: {
+            user: readyUser,
+            chatList: userChats
+        }});
 
     } catch (err) {
         next(err)
