@@ -51,6 +51,9 @@ module.exports.getOne = async (req, res, next) => {
     try {
         const {payload: {userId}} = req;
         const userInstance = await User.findById(userId);
+        if(!userInstance){
+            throw new NotFoundError('User not found');
+        }
         res.status(200).send({data: userInstance});
 
     } catch (err) {
