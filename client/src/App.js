@@ -1,22 +1,30 @@
 import {unstable_HistoryRouter as HistoryRouter, Routes, Route} from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home/index";
-import {Provider} from "react-redux";
-import store from "./store"
 import history from "./history";
+import {connect} from "react-redux";
+import {getUserDataRequest} from './actions/actionCreators';
+import {useEffect} from "react";
 
-function App () {
+function App (props) {
+//if we reload page and haven't user object but in local storage is tokens - make request on get user object
+  useEffect(()=> {
+      if(!props.user){
+          props.getUserDataRequest();
+      }
+  }, []);
+
 
     return (
-        <Provider store={store}>
             <HistoryRouter history={history}>
                 <Routes>
                     <Route path={'/'} element={<Home/>}/>
                     <Route path={'/messenger'} element={<Dashboard/>}/>
                 </Routes>
             </HistoryRouter>
-        </Provider>
     );
 }
-
-export default App;
+const mapStateToProps = ({user}) => user;
+export default connect(mapStateToProps, {
+    getUserDataRequest
+})(App);

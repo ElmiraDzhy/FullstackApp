@@ -13,7 +13,9 @@ function rootReducer (state = initialState, action) {
     switch (action.type) {
         //
         case ACTION_TYPES.ADD_MESSAGE_REQUEST:
-        case ACTION_TYPES.GET_ALL_USER_CHATS_REQUEST: {
+        case ACTION_TYPES.GET_CURRENT_CHAT_REQUEST:
+        case ACTION_TYPES.GET_ALL_USER_CHATS_REQUEST:
+        case ACTION_TYPES.GET_USER_REQUEST:{
             return {
                 ...state,
                 isFetching: true
@@ -33,7 +35,9 @@ function rootReducer (state = initialState, action) {
         case ACTION_TYPES.ADD_MESSAGE_ERROR:
         case ACTION_TYPES.LOGIN_USER_ERROR :
         case ACTION_TYPES.SIGNUP_USER_ERROR:
-        case ACTION_TYPES.GET_ALL_USER_CHATS_ERROR:{
+        case ACTION_TYPES.GET_USER_ERROR:
+        case ACTION_TYPES.GET_ALL_USER_CHATS_ERROR:
+        case ACTION_TYPES.GET_CURRENT_CHAT_ERROR: {
             return {
                 ...state,
                 errors: action.error
@@ -41,6 +45,7 @@ function rootReducer (state = initialState, action) {
         }
         //
         case ACTION_TYPES.LOGIN_USER_SUCCESS:
+        case ACTION_TYPES.GET_USER_SUCCESS:
         case ACTION_TYPES.SIGNUP_USER_SUCCESS: {
             return {
                 ...state,
@@ -56,7 +61,12 @@ function rootReducer (state = initialState, action) {
         }
 
         //
-
+        case ACTION_TYPES.GET_CURRENT_CHAT_SUCCESS: {
+            return{
+                ...state,
+                currentChat: action.data
+            }
+        }
         //
         default: {
             return {...state}

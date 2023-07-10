@@ -1,6 +1,6 @@
 import {put} from 'redux-saga/effects';
-import {addMessage, getUserChats} from '../api';
-import {addMessageSuccess, addMessageError, getAllUserChatSuccess, getAllUserChatError} from "../actions/actionCreators";
+import {addMessage, getUserChats, getCurrentChat} from '../api';
+import {addMessageSuccess, addMessageError, getAllUserChatSuccess, getAllUserChatError, getCurrentChatSuccess, getCurrentChatError} from "../actions/actionCreators";
 
 //saga-worker
 export function* addMessageSaga (action) {
@@ -20,5 +20,14 @@ export function* getAllChatsSaga (action){
         yield put(getAllUserChatSuccess(data));
     }catch(err){
         yield put(getAllUserChatError(err));
+    }
+}
+
+export function* getCurrentChatWithMessages (action){
+    try{
+        const {data: {data}} = yield getCurrentChat();
+        yield put(getCurrentChatSuccess(data));
+    }catch(err){
+        yield put(getCurrentChatError(err));
     }
 }

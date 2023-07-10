@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from './Chat.module.css';
+import {connect} from 'react-redux';
 
 function Chat (props) {
+    const {currentChat} = props;
     return (
         <div className={styles['chat-container']}>
-                (here will be chat)
+            {currentChat && currentChat.messages.map(m => <li>{m.body}</li> )}
         </div>
     )
 }
-
-export default Chat;
+const mapStateToProps =({currentChat}) => currentChat;
+export default connect(mapStateToProps)(Chat);

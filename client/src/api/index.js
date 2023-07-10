@@ -75,7 +75,7 @@ httpClient.interceptors.response.use(
 export const createChat = async (chatData) => await httpClient.post('/chats/', chatData);
 export const addMessage = async ({body, chatId}) => await httpClient.post(`/chats/${chatId}`, body);
 export const getChatWithMembers = async () => await httpClient.get('/chats/users', {});
-export const getCurrentChat = async () => await httpClient.get('/chats/', {});
+export const getCurrentChat = async (chatId) => await httpClient.get(`/chats/${chatId}`, {});
 export const addUserToChat = async (chatId) => await httpClient.put(`/${chatId}/`, {});
 export const getUserChats = async () => await httpClient.get('/chats/all', {});
 
