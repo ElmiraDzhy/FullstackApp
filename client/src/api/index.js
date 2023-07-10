@@ -58,7 +58,7 @@ httpClient.interceptors.response.use(
             return refreshSession()
                 .then(() => {
                     // when request for refresh session will back - we need to do user request one more time
-                    return httpClient(error.const);
+                    return httpClient(error.config);
                 });
         }
         else if (error.response.status === 401) {
