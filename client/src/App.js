@@ -14,5 +14,8 @@ function App () {
             </HistoryRouter>
     );
 }
-
+/*
+* todo:
+*  add user icon
+* */
 export default App;

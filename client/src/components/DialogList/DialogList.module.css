@@ -6,3 +6,21 @@
     padding: 20px;
 
 }
+
+.dialog-item{
+    width: 100%;
+    padding: 4%;
+    background-color: rgba(0, 119, 255, 0.16);
+    border: 1px solid black;
+    margin: 1% 0;
+}
+
+.dialog-item:hover{
+    background-color: rgba(99, 99, 239, 0.21);
+    cursor: pointer;
+
+}
+
+.current-dialog{
+    background-color: rgba(99, 99, 239, 0.44);
+}

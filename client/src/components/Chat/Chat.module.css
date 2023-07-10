@@ -4,5 +4,13 @@
     background-color: rgb(255, 240, 245);
 
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
+.message{
+    width: 15vw;
+    border: 1px solid grey;
+    padding: 2%
 }
