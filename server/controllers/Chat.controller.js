@@ -46,7 +46,7 @@ module.exports.addMessage = async (req, res, next) => {
         const newMsgInstance = await Message.create(body);
         chatInstance.messages.push(newMsgInstance);
         await chatInstance.save();
-        res.status(201).send({data: chatInstance})
+        res.status(201).send({data: newMsgInstance})
     } catch (err) {
         next(err);
     }

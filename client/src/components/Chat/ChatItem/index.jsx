@@ -8,7 +8,7 @@ function ChatItem (props) {
         [styles['author-message']] : user._id === message.author
     });
 return (
-    <div className={styles.message}>{body}</div>
+    <div className={cn}>{body}</div>
 )
 }
 const mapStateToProps = ({user}) => ({user});

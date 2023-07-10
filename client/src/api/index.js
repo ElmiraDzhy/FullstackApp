@@ -73,7 +73,7 @@ httpClient.interceptors.response.use(
 // chat api
 // todo: fix this api:
 export const createChat = async (chatData) => await httpClient.post('/chats/', chatData);
-export const addMessage = async ({body, chatId}) => await httpClient.post(`/chats/${chatId}`, body);
+export const addMessage = async (body) => await httpClient.post(`/chats/${body.chatId}`, body);
 export const getChatWithMembers = async () => await httpClient.get('/chats/users', {});
 export const getCurrentChat = async (chatId) => await httpClient.get(`/chats/${chatId}`, {});
 export const addUserToChat = async (chatId) => await httpClient.put(`/${chatId}/`, {});
