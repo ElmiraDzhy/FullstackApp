@@ -46,3 +46,16 @@ export const addMessageError = (error) => ({
     type: ACTION_TYPES.ADD_MESSAGE_ERROR,
     error
 });
+
+export const getAllUserChatRequest = (payload) => ({
+    type: ACTION_TYPES.GET_ALL_USER_CHATS_REQUEST,
+    payload
+});
+export const getAllUserChatSuccess = (data) => ({
+    type: ACTION_TYPES.GET_ALL_USER_CHATS_SUCCESS,
+    data
+});
+export const getAllUserChatError = (error) => ({
+    type: ACTION_TYPES.GET_ALL_USER_CHATS_ERROR,
+    error
+});

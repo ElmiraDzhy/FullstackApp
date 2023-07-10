@@ -12,7 +12,8 @@ function rootReducer (state = initialState, action) {
     console.log(action)
     switch (action.type) {
         //
-        case ACTION_TYPES.ADD_MESSAGE_REQUEST: {
+        case ACTION_TYPES.ADD_MESSAGE_REQUEST:
+        case ACTION_TYPES.GET_ALL_USER_CHATS_REQUEST: {
             return {
                 ...state,
                 isFetching: true
@@ -31,7 +32,8 @@ function rootReducer (state = initialState, action) {
         //
         case ACTION_TYPES.ADD_MESSAGE_ERROR:
         case ACTION_TYPES.LOGIN_USER_ERROR :
-        case ACTION_TYPES.SIGNUP_USER_ERROR: {
+        case ACTION_TYPES.SIGNUP_USER_ERROR:
+        case ACTION_TYPES.GET_ALL_USER_CHATS_ERROR:{
             return {
                 ...state,
                 errors: action.error
@@ -46,7 +48,12 @@ function rootReducer (state = initialState, action) {
             }
         }
         //
-
+        case ACTION_TYPES.GET_ALL_USER_CHATS_SUCCESS: {
+            return {
+                ...state,
+                chatList: action.data
+            }
+        }
 
         //
 
