@@ -89,4 +89,3 @@ export const getCurrentChatError= (error) => ({
     type: ACTION_TYPES.GET_CURRENT_CHAT_ERROR,
     error
 });
-

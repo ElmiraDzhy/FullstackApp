@@ -5,7 +5,8 @@ const initialState = {
     chatList: [],
     currentChat: null,
     isFetching: false,
-    errors: null
+    errors: null,
+    modalWindow: false,
 }
 
 function rootReducer (state = initialState, action) {
