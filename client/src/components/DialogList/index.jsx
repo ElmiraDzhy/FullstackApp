@@ -25,6 +25,7 @@ function DialogList (props) {
 
     const addNewChat = (e) => {
         createNewChatRequest({name: newChatName.current.value, members: [`${user._id}`]});
+        setModalOpen(!modalOpen);
     }
 
     return (
