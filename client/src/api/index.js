@@ -76,6 +76,6 @@ export const createChat = async (chatData) => await httpClient.post('/chats/', c
 export const addMessage = async (body) => await httpClient.post(`/chats/${body.chatId}`, body);
 export const getChatWithMembers = async () => await httpClient.get('/chats/users', {});
 export const getCurrentChat = async (chatId) => await httpClient.get(`/chats/${chatId}`, {});
-export const addUserToChat = async (chatId) => await httpClient.put(`/${chatId}/`, {});
+export const addUserToChat = async (chatId) => await httpClient.put(`/chats/${chatId}/`, {});
 export const getUserChats = async () => await httpClient.get('/chats/all', {});
 
