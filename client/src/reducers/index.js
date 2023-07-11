@@ -38,6 +38,7 @@ function rootReducer (state = initialState, action) {
         case ACTION_TYPES.SIGNUP_USER_ERROR:
         case ACTION_TYPES.GET_USER_ERROR:
         case ACTION_TYPES.GET_ALL_USER_CHATS_ERROR:
+        case ACTION_TYPES.UPDATE_USER_ERROR:
         case ACTION_TYPES.GET_CURRENT_CHAT_ERROR: {
             return {
                 ...state,
@@ -46,6 +47,7 @@ function rootReducer (state = initialState, action) {
         }
         //
         case ACTION_TYPES.LOGIN_USER_SUCCESS:
+        case ACTION_TYPES.UPDATE_USER_SUCCESS:
         case ACTION_TYPES.SIGNUP_USER_SUCCESS: {
             return {
                 ...state,
@@ -76,6 +78,7 @@ function rootReducer (state = initialState, action) {
             }
         }
         //
+
         default: {
             return {...state}
         }

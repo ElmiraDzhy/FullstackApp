@@ -10,4 +10,6 @@ userRouter.get('/', checkToken, UserController.getOne);
 userRouter.delete('/', checkToken, UserController.deleteOne);
 userRouter.post('/refresh', UserController.refreshSession);
 
+userRouter.patch('/', checkToken, UserController.updateOne);
+
 module.exports = userRouter;

@@ -2,9 +2,10 @@ import React, {useState , useRef} from "react";
 import {connect} from "react-redux";
 import styles from './UserMenu.module.css'
 import UserMenuModal from "./UserMenuModal";
+import {updateUserRequest} from "../../actions/actionCreators";
 
 function UserMenu (props) {
-    const {user} = props;
+    const {user, updateUserRequest} = props;
     const [modalOpen, setOpen] = useState(false);
     const firstNameInputRef = useRef(null);
     const lastNameInputRef = useRef(null);
@@ -16,6 +17,10 @@ function UserMenu (props) {
     const submitData = () => {
         const firstName = firstNameInputRef.current.value;
         const lastName = lastNameInputRef.current.value;
+        updateUserRequest({
+            firstName,
+            lastName
+        });
     }
     return (
         <>
@@ -56,5 +61,7 @@ function UserMenu (props) {
 }
 const mapStateToProps = ({user}) => ({user});
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+    updateUserRequest
+}
 export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

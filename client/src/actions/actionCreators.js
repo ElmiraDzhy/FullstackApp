@@ -46,6 +46,20 @@ export const getUserDataError = (error) => ({
     error
 })
 
+export const updateUserRequest = (payload) => ({
+    type: ACTION_TYPES.UPDATE_USER_REQUEST,
+    payload
+})
+export const updateUserSuccess = (data) => ({
+    type: ACTION_TYPES.UPDATE_USER_SUCCESS,
+    data
+})
+export const updateUserError = (error) => ({
+    type: ACTION_TYPES.UPDATE_USER_REQUEST,
+    error
+})
+
+
 //
 //CHATS
 //

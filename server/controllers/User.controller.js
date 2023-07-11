@@ -81,6 +81,18 @@ module.exports.deleteOne = async (req, res, next) => {
     }
 }
 
+module.exports.updateOne = async (req, res, next) => {
+    try {
+        const {payload: {userId}, body} = req;
+        const userInstance = await User.findByIdAndUpdate(userId, body, {
+            returnOriginal: false
+        });
+        res.status(200).send({data: userInstance});
+    } catch (err) {
+        next(err)
+    }
+}
+
 module.exports.refreshSession = async (req, res, next) => {
     const {body: {refreshToken}} = req;
     let verifyResult;
