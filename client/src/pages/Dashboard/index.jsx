@@ -5,6 +5,7 @@ import MessageArea from '../../components/MessageArea';
 import styles from './Dashboard.module.css';
 import {connect} from "react-redux";
 import {getUserDataRequest, getAllUserChatRequest} from "../../actions/actionCreators";
+import UserMenu from "../../components/UserMenu";
 
 function Dashboard (props) {
 
@@ -18,7 +19,10 @@ function Dashboard (props) {
     }, []);
     return (
         <main className={styles.main}>
-            <DialogList/>
+            <div className={styles.aside}>
+                <UserMenu/>
+                <DialogList/>
+            </div>
             <section className={styles.container}>
                 <Chat/>
                 <MessageArea/>

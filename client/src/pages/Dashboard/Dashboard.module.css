@@ -29,3 +29,11 @@ body, .main, ul {
     box-sizing: border-box;
 
 }
+
+.aside{
+    /*todo fix this styles*/
+    display: flex;
+    flex-direction: column;
+    /*width: 100px;*/
+    height: 50px;
+}

@@ -9,11 +9,15 @@ function MessageArea (props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        const newMessage = {
-            body: value,
-            chatId: currentChat._id,
+        if(value){
+            const newMessage = {
+                body: value,
+                chatId: currentChat._id,
+            }
+            addMessageRequest(newMessage);
+            setValue('');
         }
-        addMessageRequest(newMessage);
+
     };
     const changeHandler = ({target: {value}}) => {
         setValue(value);
