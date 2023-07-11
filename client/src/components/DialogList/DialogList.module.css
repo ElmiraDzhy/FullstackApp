@@ -24,3 +24,18 @@
 .current-dialog{
     background-color: rgba(99, 99, 239, 0.44);
 }
+
+.modal-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-top:20px ;
+}
+
+.modal-container > *{
+    margin-top: 40px;
+}

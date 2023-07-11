@@ -34,6 +34,7 @@ function rootReducer (state = initialState, action) {
         }
         //
         case ACTION_TYPES.ADD_MESSAGE_ERROR:
+        case ACTION_TYPES.CREATE_NEW_CHAT_ERROR:
         case ACTION_TYPES.LOGIN_USER_ERROR :
         case ACTION_TYPES.SIGNUP_USER_ERROR:
         case ACTION_TYPES.GET_USER_ERROR:
@@ -82,7 +83,14 @@ function rootReducer (state = initialState, action) {
                 ...initialState
             }
         }
+        //
+        case ACTION_TYPES.CREATE_NEW_CHAT_SUCCESS: {
 
+            return{
+                ...state,
+                // chatList: state.chatList.concat(action.data)
+            }
+        }
         //
         default: {
             return {...state}

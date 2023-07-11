@@ -98,11 +98,24 @@ export const getCurrentChatRequest = (payload) => ({
     type: ACTION_TYPES.GET_CURRENT_CHAT_REQUEST,
     payload
 });
-export const getCurrentChatSuccess= (data) => ({
+export const getCurrentChatSuccess = (data) => ({
     type: ACTION_TYPES.GET_CURRENT_CHAT_SUCCESS,
     data
 });
-export const getCurrentChatError= (error) => ({
+export const getCurrentChatError = (error) => ({
     type: ACTION_TYPES.GET_CURRENT_CHAT_ERROR,
+    error
+});
+
+export const createNewChatRequest = (payload) => ({
+    type: ACTION_TYPES.CREATE_NEW_CHAT_REQUEST,
+    payload,
+});
+export const createNewChatSuccess = (data) => ({
+    type: ACTION_TYPES.CREATE_NEW_CHAT_SUCCESS,
+    data,
+});
+export const createNewChatError = (error) => ({
+    type: ACTION_TYPES.CREATE_NEW_CHAT_ERROR,
     error
 });
