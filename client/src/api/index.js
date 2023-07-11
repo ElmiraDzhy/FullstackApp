@@ -14,7 +14,6 @@ export const deleteUser = async () => await httpClient.delete('/users/');
 export const updateUser = async (body) => await httpClient.patch('/users/', body);
 export const logOut = async () => {
     localStorage.clear();
-    //перенаправляємо юзера логінитись
     history.replace('/');
 };
 

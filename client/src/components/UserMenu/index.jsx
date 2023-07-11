@@ -2,10 +2,10 @@ import React, {useState , useRef} from "react";
 import {connect} from "react-redux";
 import styles from './UserMenu.module.css'
 import UserMenuModal from "./UserMenuModal";
-import {updateUserRequest} from "../../actions/actionCreators";
+import {updateUserRequest, logOut} from "../../actions/actionCreators";
 
 function UserMenu (props) {
-    const {user, updateUserRequest} = props;
+    const {user, updateUserRequest, logOut} = props;
     const [modalOpen, setOpen] = useState(false);
     const firstNameInputRef = useRef(null);
     const lastNameInputRef = useRef(null);
@@ -49,7 +49,7 @@ function UserMenu (props) {
                                         type={"text"}
                                         defaultValue={user.lastName}
                                         ref={lastNameInputRef}/>}
-                                <button>logOut</button>
+                                <button onClick={() => logOut()}>logOut</button>
                                 {editMode ? <button onClick={submitEdit}>Save</button> : <button onClick={() => setMode(!editMode)}> Edit</button>}
                             </div>
                         )}
@@ -62,6 +62,7 @@ function UserMenu (props) {
 const mapStateToProps = ({user}) => ({user});
 
 const mapDispatchToProps = {
-    updateUserRequest
+    updateUserRequest,
+    logOut
 }
 export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

@@ -44,6 +44,6 @@ export function* updateUserSaga (action) {
     }
 }
 
-export function* deleteUser () {
-
+export function* logOutSaga () {
+    yield API.logOut();
 }

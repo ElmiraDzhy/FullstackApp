@@ -59,6 +59,9 @@ export const updateUserError = (error) => ({
     error
 })
 
+export const logOut  = () => ({
+    type: ACTION_TYPES.LOGOUT,
+})
 
 //
 //CHATS
