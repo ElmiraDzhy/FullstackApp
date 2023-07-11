@@ -4,17 +4,18 @@ const NotFoundError = require('../errors/NotFoundError');
 const InvalidDataError = require('../errors/InvalidDataError');
 const TokenError = require('../errors/TokenError');
 const TokenService = require('../services/tokenService');
+const {deletePassword} = require('../utils/deletePassword');
 
 module.exports.signUp = async (req, res, next) => {
     try {
         const newUser = await User.create(req.body);
         const tokens = await TokenService.createTokenPair({email: req.body.email, userId: newUser._id});
-        const readyUser = Object.assign({}, newUser._doc);
-        delete readyUser.passwordHash;
+
         const added = await RefreshToken.create({
             token: tokens.refreshToken,
             userId: newUser._id
         })
+        const readyUser = deletePassword(newUser);
         res.status(201).send({data: readyUser, tokens});
     } catch (err) {
         next(err)
@@ -39,8 +40,7 @@ module.exports.signIn = async (req, res, next) => {
             token: tokens.refreshToken,
             userId: foundUser._id
         })
-        const readyUser = Object.assign({}, foundUser._doc);
-        delete readyUser.passwordHash;
+        const readyUser = deletePassword(foundUser);
         res.status(200).send({data: readyUser, tokens});
     } catch (err) {
         next(err);
@@ -59,8 +59,7 @@ module.exports.getOne = async (req, res, next) => {
             members: userId
         })
 
-        const readyUser = Object.assign({}, userInstance._doc);
-        delete readyUser.passwordHash;
+        const readyUser = deletePassword(userInstance);
         res.status(200).send({data: {
             user: readyUser,
             chatList: userChats
@@ -75,7 +74,8 @@ module.exports.deleteOne = async (req, res, next) => {
     try {
         const {payload: {userId}} = req;
         const userInstance = await User.findByIdAndDelete(userId);
-        res.status(200).send({data: userInstance});
+        const readyUser = deletePassword(userInstance);
+        res.status(200).send({data: readyUser});
     } catch (err) {
         next(err)
     }
@@ -87,7 +87,8 @@ module.exports.updateOne = async (req, res, next) => {
         const userInstance = await User.findByIdAndUpdate(userId, body, {
             returnOriginal: false
         });
-        res.status(200).send({data: userInstance});
+        const readyUser = deletePassword(userInstance);
+        res.status(200).send({data: readyUser});
     } catch (err) {
         next(err)
     }

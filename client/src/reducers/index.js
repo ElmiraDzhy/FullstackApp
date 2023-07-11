@@ -61,7 +61,6 @@ function rootReducer (state = initialState, action) {
                 chatList: action.data
             }
         }
-
         //
         case ACTION_TYPES.GET_CURRENT_CHAT_SUCCESS: {
             return{
@@ -78,7 +77,7 @@ function rootReducer (state = initialState, action) {
             }
         }
         //
-
+        //
         default: {
             return {...state}
         }
