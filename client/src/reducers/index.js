@@ -88,7 +88,7 @@ function rootReducer (state = initialState, action) {
 
             return{
                 ...state,
-                // chatList: state.chatList.concat(action.data)
+                chatList: action.data
             }
         }
         //

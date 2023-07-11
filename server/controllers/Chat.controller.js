@@ -4,7 +4,8 @@ module.exports.createChat = async (req, res, next) => {
     try {
         const {body} = req;
         const newChat = await Chat.create(body);
-        res.status(201).send({data: newChat});
+        const allChatsList = await Chat.find({});
+        res.status(201).send({data: allChatsList});
     } catch (err) {
         next(err);
     }
