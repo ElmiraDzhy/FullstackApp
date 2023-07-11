@@ -1,10 +1,10 @@
 .modal-container{
     width: 20vw;
     height: 20vw;
-    position: fixed;
-    left: 50%;
+    position: absolute;
     top: 50%;
-    translate: -50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
     z-index: 5;
     background-color: antiquewhite;
     padding: 20px;

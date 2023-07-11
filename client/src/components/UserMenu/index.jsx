@@ -36,21 +36,17 @@ function UserMenu (props) {
                             setMode(!editMode)
                         }
                         return (
-                            <div>
-                                <img src={user?.avatar} className={styles.avatar} alt={''}/>
-                                <p>{user ? `${user.firstName} ${user.lastName}` : 'Anonym'}</p>
-                                {editMode &&
-                                    <input
-                                        type={"text"}
-                                        defaultValue={user.firstName}
-                                        ref={firstNameInputRef}/>}
-                                {editMode &&
-                                    <input
-                                        type={"text"}
-                                        defaultValue={user.lastName}
-                                        ref={lastNameInputRef}/>}
-                                <button onClick={() => logOut()}>logOut</button>
-                                {editMode ? <button onClick={submitEdit}>Save</button> : <button onClick={() => setMode(!editMode)}> Edit</button>}
+                            <div className={styles.container}>
+                                <img src={user?.avatar} className={styles.avatar} alt={''} />
+                                <p className={styles.name}>{user ? `${user.firstName} ${user.lastName}` : 'Anonym'}</p>
+                                {editMode && <input type="text" defaultValue={user.firstName} className={styles.inputField} ref={firstNameInputRef} />}
+                                {editMode && <input type="text" defaultValue={user.lastName} className={styles.inputField} ref={lastNameInputRef} />}
+                                <button onClick={() => logOut()} className={`${styles.buttons} ${styles.secondary}`}>Log Out</button>
+                                {editMode ? (
+                                    <button onClick={submitEdit} className={`${styles.buttons} ${styles.primary}`}>Save</button>
+                                ) : (
+                                    <button onClick={() => setMode(!editMode)} className={`${styles.buttons} ${styles.secondary}`}>Edit</button>
+                                )}
                             </div>
                         )}
                 }
