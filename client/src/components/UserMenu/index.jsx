@@ -24,6 +24,11 @@ function UserMenu (props) {
             lastName
         });
     }
+
+    const updateUserImage = (imagePath) => {
+        console.log(imagePath)
+        updateUserRequest({imagePath})
+    }
     const imagePlaceholder = user?.imagePath || CONSTANTS.USER_PLACEHOLDER;
     return (
         <>
@@ -40,20 +45,21 @@ function UserMenu (props) {
                         }
                         return (
                             <>
-                                <DragNDropArea>
+                                <DragNDropArea update={updateUserImage}>
                                     <div className={styles.container}>
                                         <img src={imagePlaceholder} className={styles['full-avatar']} alt={''} />
-                                        {/*<input type={'file'} onClick={(e) => {*/}
-                                        {/*    console.log(e)}}/>*/}
                                         <p className={styles.name}>{user ? `${user.firstName} ${user.lastName}` : 'Anonym'}</p>
                                         {editMode && <input type="text" defaultValue={user.firstName} className={styles.inputField} ref={firstNameInputRef} />}
                                         {editMode && <input type="text" defaultValue={user.lastName} className={styles.inputField} ref={lastNameInputRef} />}
-                                        <button onClick={() => logOut()} className={`${styles.buttons} ${styles.secondary}`}>Log Out</button>
-                                        {editMode ? (
-                                            <button onClick={submitEdit} className={`${styles.buttons} ${styles.primary}`}>Save</button>
-                                        ) : (
-                                            <button onClick={() => setMode(!editMode)} className={`${styles.buttons} ${styles.secondary}`}>Edit</button>
-                                        )}
+                                        <div className={styles['button-container']}>
+                                            <button onClick={() => logOut()} className={`${styles.buttons} ${styles.secondary}`}>Log Out</button>
+                                            {editMode ? (
+                                                <button onClick={submitEdit} className={`${styles.buttons} ${styles.primary}`}>Save</button>
+                                            ) : (
+                                                <button onClick={() => setMode(!editMode)} className={`${styles.buttons} ${styles.secondary}`}>Edit</button>
+                                            )}
+                                        </div>
+
                                     </div>
                                 </DragNDropArea>
                             </>
