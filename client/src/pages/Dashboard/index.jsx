@@ -18,8 +18,10 @@ function Dashboard (props) {
             props.getAllUserChatRequest()
         }
     }, []);
+    //todo fix styles
     return (
         <>
+
         <main className={styles.main}>
             <UserMenu/>
             <ChatMenu/>

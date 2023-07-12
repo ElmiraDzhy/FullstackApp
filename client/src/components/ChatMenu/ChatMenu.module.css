@@ -1,0 +1,12 @@
+.menu-container{
+    width: 100%;
+    /*padding: 5%;*/
+    background-color: #0077ff;
+}
+
+.chat-img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #90c7ee;
+}

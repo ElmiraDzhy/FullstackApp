@@ -15,8 +15,10 @@ function ModalWindow (props) {
         <div className={styles.background} onClick={closeHandler}>
             <div className={styles['modal-container']}>
                 <button onClick={closeHandler}>x</button>
+                <div className={styles['modal-data']}>
                 {props.children([editMode, setMode])}
-            </div>
+                </div>
+                </div>
         </div>
     )
 }
