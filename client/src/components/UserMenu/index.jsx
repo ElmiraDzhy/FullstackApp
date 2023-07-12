@@ -4,6 +4,7 @@ import styles from './UserMenu.module.css'
 import ModalWindow from "../ModalWindow";
 import {updateUserRequest, logOut} from "../../actions/actionCreators";
 import CONSTANTS from '../../constants';
+import DragNDropArea from "../DragNDropArea";
 
 function UserMenu (props) {
     const {user, updateUserRequest, logOut} = props;
@@ -23,11 +24,11 @@ function UserMenu (props) {
             lastName
         });
     }
-    const imagePlaceholder = user.imagePath || CONSTANTS.USER_PLACEHOLDER;
+    const imagePlaceholder = user?.imagePath || CONSTANTS.USER_PLACEHOLDER;
     return (
         <>
             <div className={styles['user-menu-container']} onClick={modalHandler}>
-                <img src={user?.imagePath} className={styles.avatar} alt={''}/>
+                <img src={imagePlaceholder} className={styles.avatar} alt={''}/>
                 <p>{user ? user.firstName : 'Anonym'}</p>
             </div>
             {modalOpen && <ModalWindow close={modalHandler}>
@@ -38,20 +39,24 @@ function UserMenu (props) {
                             setMode(!editMode)
                         }
                         return (
-                            <div className={styles.container}>
-                                <img src={user?.avatar} className={styles.avatar} alt={''} />
-                                {/*<input type={'file'} onClick={(e) => {*/}
-                                {/*    console.log(e)}}/>*/}
-                                <p className={styles.name}>{user ? `${user.firstName} ${user.lastName}` : 'Anonym'}</p>
-                                {editMode && <input type="text" defaultValue={user.firstName} className={styles.inputField} ref={firstNameInputRef} />}
-                                {editMode && <input type="text" defaultValue={user.lastName} className={styles.inputField} ref={lastNameInputRef} />}
-                                <button onClick={() => logOut()} className={`${styles.buttons} ${styles.secondary}`}>Log Out</button>
-                                {editMode ? (
-                                    <button onClick={submitEdit} className={`${styles.buttons} ${styles.primary}`}>Save</button>
-                                ) : (
-                                    <button onClick={() => setMode(!editMode)} className={`${styles.buttons} ${styles.secondary}`}>Edit</button>
-                                )}
-                            </div>
+                            <>
+                                <DragNDropArea>
+                                    <div className={styles.container}>
+                                        <img src={imagePlaceholder} className={styles['full-avatar']} alt={''} />
+                                        {/*<input type={'file'} onClick={(e) => {*/}
+                                        {/*    console.log(e)}}/>*/}
+                                        <p className={styles.name}>{user ? `${user.firstName} ${user.lastName}` : 'Anonym'}</p>
+                                        {editMode && <input type="text" defaultValue={user.firstName} className={styles.inputField} ref={firstNameInputRef} />}
+                                        {editMode && <input type="text" defaultValue={user.lastName} className={styles.inputField} ref={lastNameInputRef} />}
+                                        <button onClick={() => logOut()} className={`${styles.buttons} ${styles.secondary}`}>Log Out</button>
+                                        {editMode ? (
+                                            <button onClick={submitEdit} className={`${styles.buttons} ${styles.primary}`}>Save</button>
+                                        ) : (
+                                            <button onClick={() => setMode(!editMode)} className={`${styles.buttons} ${styles.secondary}`}>Edit</button>
+                                        )}
+                                    </div>
+                                </DragNDropArea>
+                            </>
                         )}
                 }
             </ModalWindow>}
