@@ -21,13 +21,10 @@ function Dashboard (props) {
     //todo fix styles
     return (
         <>
-
         <main className={styles.main}>
             <UserMenu/>
             <ChatMenu/>
-            {/*<div className={styles.aside}>*/}
-                <DialogList/>
-            {/*</div>*/}
+            <DialogList/>
             <section className={styles.container}>
                 <Chat/>
                 <MessageArea/>

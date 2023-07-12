@@ -6,7 +6,7 @@ import CONSTANTS from "../../constants";
 const ChatMenu = (props) => {
     const {currentChat} = props;
     const [modalOpen, setModalOpen] = useState(false);
-    const imagePlaceholder = currentChat.imagePath || CONSTANTS.CHAT_PLACEHOLDER;
+    const imagePlaceholder = currentChat?.imagePath || CONSTANTS.CHAT_PLACEHOLDER;
 
     return (
         <div className={styles['menu-container']} onClick={() => setModalOpen(!modalOpen)}>
