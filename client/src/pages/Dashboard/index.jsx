@@ -6,6 +6,7 @@ import styles from './Dashboard.module.css';
 import {connect} from "react-redux";
 import {getUserDataRequest, getAllUserChatRequest} from "../../actions/actionCreators";
 import UserMenu from "../../components/UserMenu";
+import ChatMenu from "../../components/ChatMenu";
 
 function Dashboard (props) {
 
@@ -18,16 +19,19 @@ function Dashboard (props) {
         }
     }, []);
     return (
+        <>
         <main className={styles.main}>
-            <div className={styles.aside}>
-                <UserMenu/>
+            <UserMenu/>
+            <ChatMenu/>
+            {/*<div className={styles.aside}>*/}
                 <DialogList/>
-            </div>
+            {/*</div>*/}
             <section className={styles.container}>
                 <Chat/>
                 <MessageArea/>
             </section>
         </main>
+        </>
     );
 }
 const mapStateToProps = ({user}) => ({user});

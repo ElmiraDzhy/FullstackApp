@@ -1,7 +1,7 @@
 import React, {useState , useRef} from "react";
 import {connect} from "react-redux";
 import styles from './UserMenu.module.css'
-import UserMenuModal from "./UserMenuModal";
+import ModalWindow from "../ModalWindow";
 import {updateUserRequest, logOut} from "../../actions/actionCreators";
 
 function UserMenu (props) {
@@ -28,7 +28,7 @@ function UserMenu (props) {
                 <img src={user?.avatar} className={styles.avatar} alt={''}/>
                 <p>{user ? user.firstName : 'Anonym'}</p>
             </div>
-            {modalOpen && <UserMenuModal close={modalHandler}>
+            {modalOpen && <ModalWindow close={modalHandler}>
                 {
                     ([editMode, setMode]) => {
                         const submitEdit = () => {
@@ -50,7 +50,7 @@ function UserMenu (props) {
                             </div>
                         )}
                 }
-            </UserMenuModal>}
+            </ModalWindow>}
         </>
 
     )

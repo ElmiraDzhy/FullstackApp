@@ -3,7 +3,7 @@ import { getCurrentChatRequest, createNewChatRequest} from "../../actions/action
 import styles from './DialogList.module.css'
 import {connect} from "react-redux";
 import cx from 'classnames'
-import UserMenuModal from "../UserMenu/UserMenuModal";
+import ModalWindow from "../ModalWindow";
 function DialogList (props) {
     const {chatList,  getCurrentChatRequest, createNewChatRequest, user} = props;
     const [modalOpen, setModalOpen] = useState(false);
@@ -34,7 +34,7 @@ function DialogList (props) {
                 {chatList && chatList.map(mapList)}
             </ul>
             <button onClick={()=>{setModalOpen(!modalOpen)}}>+</button>
-            {modalOpen && <UserMenuModal close={() => setModalOpen(!modalOpen)}>
+            {modalOpen && <ModalWindow close={() => setModalOpen(!modalOpen)}>
                 {
                     () => {
                         return (
@@ -45,7 +45,7 @@ function DialogList (props) {
                             </div>
                         )}
                 }
-            </UserMenuModal>}
+            </ModalWindow>}
         </div>
     )
 }

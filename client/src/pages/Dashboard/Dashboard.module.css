@@ -1,8 +1,8 @@
 .main {
     width: 100%;
     height: 100vh;
-    display: flex;
-    flex-direction: row;
+    /*display: flex;*/
+    /*flex-direction: row;*/
     box-sizing: border-box;
     border: 5px solid #6363ef;;
 
@@ -10,12 +10,16 @@
     font-size: 15px;
     font-weight: lighter;
     color: #6363ef;
+
+    /*grid*/
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 10vh 1fr;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    width: 80%;
     height: 100%;
 
 }
@@ -30,9 +34,15 @@ body, .main, ul {
 
 }
 
-.aside{
-    /*todo fix this styles*/
+/*.aside{*/
+/*    !*todo fix this styles*!*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    width: 20%;*/
+/*}*/
+
+.first-line{
+    width:100%;
     display: flex;
-    flex-direction: column;
-    width: 20%;
+    flex-direction: row;
 }

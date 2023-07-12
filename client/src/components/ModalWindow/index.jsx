@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styles from './UserMenuModal.module.css'
-function UserMenuModal (props) {
+function ModalWindow (props) {
     const [editMode, setMode] = useState(false);
     const closeHandler = (e) => {
         if(e.currentTarget === e.target){
@@ -21,4 +21,4 @@ function UserMenuModal (props) {
     )
 }
 
-export default UserMenuModal
+export default ModalWindow
