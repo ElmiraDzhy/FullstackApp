@@ -20,6 +20,9 @@ const userSchema = new Schema({
     },
     birthday: {
         type: Date,
+    },
+    imagePath: {
+        type: String,
     }
 
 });

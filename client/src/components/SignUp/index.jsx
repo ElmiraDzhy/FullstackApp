@@ -32,6 +32,7 @@ function SignUp (props) {
                     <Field className={styles['form-input']} name="password" placeholder="Type your password"/>
                     <Field className={styles['form-input']} name="birthday" placeholder="Type your birthday"
                            type="date"/>
+                    <Field name={'avatar'} type={'file'}/>
                     <button className={styles['btn']} type="submit">Submit</button>
                 </Form>
             )}

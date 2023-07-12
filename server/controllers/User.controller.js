@@ -8,8 +8,9 @@ const {deletePassword} = require('../utils/deletePassword');
 
 module.exports.signUp = async (req, res, next) => {
     try {
-        const newUser = await User.create(req.body);
-        const tokens = await TokenService.createTokenPair({email: req.body.email, userId: newUser._id});
+        const {body} = req;
+        const newUser = await User.create(body);
+        const tokens = await TokenService.createTokenPair({email: body.email, userId: newUser._id});
 
         const added = await RefreshToken.create({
             token: tokens.refreshToken,
@@ -84,9 +85,9 @@ module.exports.deleteOne = async (req, res, next) => {
 module.exports.updateOne = async (req, res, next) => {
     try {
         const {payload: {userId}, body} = req;
-        const userInstance = await User.findByIdAndUpdate(userId, body, {
-            returnOriginal: false
-        });
+        const userInstance = await User.findByIdAndUpdate(userId,
+            body,
+            {returnOriginal: false});
         const readyUser = deletePassword(userInstance);
         res.status(200).send({data: readyUser});
     } catch (err) {

@@ -9,6 +9,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser);
 app.use('/api', apiRouter);
+app.use(express.static('/public'));
 
 app.use(errorHandling)
 
