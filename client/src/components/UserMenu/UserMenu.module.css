@@ -15,8 +15,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    padding: 1%;
-    height: 10%;
     background-color: rgb(134, 196, 211);
 
 }
@@ -32,11 +30,19 @@
 }
 
 .avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: coral;
+    object-fit: cover;
+}
+
+.full-avatar {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 10px;
+    background-color: coral;
 }
 
 .name {

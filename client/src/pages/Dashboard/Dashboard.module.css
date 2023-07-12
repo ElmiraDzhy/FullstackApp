@@ -1,8 +1,6 @@
 .main {
     width: 100%;
     height: 100vh;
-    /*display: flex;*/
-    /*flex-direction: row;*/
     box-sizing: border-box;
     border: 5px solid #6363ef;;
 
@@ -20,8 +18,6 @@
 .container {
     display: flex;
     flex-direction: column;
-    height: 100%;
-
 }
 
 body, .main, ul {
@@ -34,12 +30,6 @@ body, .main, ul {
 
 }
 
-/*.aside{*/
-/*    !*todo fix this styles*!*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    width: 20%;*/
-/*}*/
 
 .first-line{
     width:100%;
