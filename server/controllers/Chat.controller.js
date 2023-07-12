@@ -2,9 +2,9 @@ const {Chat, Message} = require('../models');
 
 module.exports.createChat = async (req, res, next) => {
     try {
-        const {body} = req;
+        const {body, payload: {userId}} = req;
         const newChat = await Chat.create(body);
-        const allChatsList = await Chat.find({});
+        const allChatsList = await Chat.find({members: userId});
         res.status(201).send({data: allChatsList});
     } catch (err) {
         next(err);
