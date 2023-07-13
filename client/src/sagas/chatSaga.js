@@ -35,8 +35,6 @@ export function* getCurrentChatWithMessages (action){
 export function* createNewChatSaga (action){
     try{
         const {data: {data}} = yield API.createChat(action.payload);
-        console.log('in chat saga: ')
-        console.log(data)
         yield put(actionCreators.createNewChatSuccess(data));
     }catch(err){
         yield put(actionCreators.createNewChatError(err));

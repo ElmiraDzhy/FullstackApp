@@ -35,5 +35,5 @@ const ChatMenu = (props) => {
         </div>
     )
 }
-const mapStateToProps = ({currentChat}) => ({currentChat});
+const mapStateToProps = ({chat: {currentChat}}) => ({currentChat});
 export default connect(mapStateToProps, {})(ChatMenu);

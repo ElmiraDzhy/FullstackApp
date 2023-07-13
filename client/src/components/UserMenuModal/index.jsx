@@ -102,7 +102,7 @@ const UserMenuModal = (props) => {
 }
 
 
-const mapStateToProps = ({ user }) => ({ user })
+const mapStateToProps = ({ user: {user} }) => ({ user })
 
 const mapDispatchToProps = {
     updateUserRequest,

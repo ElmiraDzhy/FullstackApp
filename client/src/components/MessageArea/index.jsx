@@ -69,6 +69,6 @@ function MessageArea (props) {
 const mapDispatchToProps = {
     addMessageRequest
 }
-const mapStateToProps = ({currentChat}) => ({currentChat});
+const mapStateToProps = ({chat: {currentChat}}) => ({currentChat});
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageArea);

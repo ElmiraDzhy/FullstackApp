@@ -33,7 +33,7 @@ function Dashboard (props) {
         </>
     );
 }
-const mapStateToProps = ({user}) => ({user});
+const mapStateToProps = ({user: {user}}) => ({user});
 export default connect(mapStateToProps,{
     getUserDataRequest,
     getAllUserChatRequest

@@ -8,6 +8,7 @@ const initialState = {
 
 
 export function user (state = initialState, action){
+    console.log(action)
     switch (action.type) {
         //
         case ACTION_TYPES.GET_USER_REQUEST:{

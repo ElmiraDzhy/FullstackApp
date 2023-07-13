@@ -8,6 +8,7 @@ const initialState = {
 
 }
 export function chat (state=initialState, action){
+    console.log(action)
     switch (action.type) {
         //
         case ACTION_TYPES.ADD_MESSAGE_REQUEST:
@@ -43,7 +44,8 @@ export function chat (state=initialState, action){
         case ACTION_TYPES.GET_ALL_USER_CHATS_SUCCESS: {
             return {
                 ...state,
-                chatList: action.data
+                chatList: action.data,
+                isFetching: false
             }
         }
         //

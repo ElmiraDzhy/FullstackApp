@@ -24,7 +24,6 @@ export const logOut = async () => {
 export const refreshSession = async () => {
     const refreshToken = localStorage.getItem('refreshToken');
     const data = await httpClient.post('/users/refresh', {refreshToken});
-    console.log(data)
     return data;
 };
 
@@ -58,7 +57,6 @@ httpClient.interceptors.response.use(
         //if 403 and into localStorage is refreshToken - do refresh session
         if (error.response.status === 403 && localStorage.getItem('refreshToken')) {
             // refresh session
-            console.log('REFRESH');
             return refreshSession()
                 .then(() => {
                     // when request for refresh session will back - we need to do user request one more time

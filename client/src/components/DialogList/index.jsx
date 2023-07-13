@@ -7,7 +7,7 @@ import ModalWindow from "../ModalWindow";
 function DialogList (props) {
     const {chatList,  getCurrentChatRequest, createNewChatRequest, user} = props;
     const [modalOpen, setModalOpen] = useState(false);
-    const newChatName = useRef(null)
+    const newChatName = useRef(null);
     const changeCurrentChat = (chatId) => {
         //generate action for changing currentChat
         getCurrentChatRequest(chatId);
@@ -49,7 +49,7 @@ function DialogList (props) {
         </div>
     )
 }
-const mapStateToProps = ({chatList, currentChat, user}) => ({chatList, currentChat, user});
+const mapStateToProps = ({chat: {chatList, currentChat}, user: {user}}) => ({chatList, currentChat, user});
 
 const mapDispatchToProps = {
     getCurrentChatRequest,
