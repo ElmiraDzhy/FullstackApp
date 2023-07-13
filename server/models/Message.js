@@ -11,7 +11,7 @@ const messageSchema = new Schema({
     },
     body: {
         type: String,
-        required: [true, 'Body is required field for message'],
+        // required: [true, 'Body is required field for message'],
     },
     status: {
         type: Boolean,

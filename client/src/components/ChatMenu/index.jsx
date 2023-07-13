@@ -12,8 +12,8 @@ const ChatMenu = (props) => {
         <div className={styles['menu-container']} onClick={() => setModalOpen(!modalOpen)}>
             {currentChat &&
                 <>
-                    <img className={styles['chat-img']} alt={''} src={imagePlaceholder}/>
                     <p>{currentChat.name}</p>
+                    <img className={styles['chat-img']} alt={''} src={imagePlaceholder}/>
                 </>}
             {
                 modalOpen && <ModalWindow close={() => setModalOpen(!modalOpen)}>

@@ -1,0 +1,39 @@
+.user-input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffe0f0; /* Light-rose */
+    color: #333; /* Dark gray */
+}
+
+.btn {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #aad8ff; /* Blue */
+    color: #fff; /* White */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #84c1ff; /* Lighter shade of blue */
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: coral;
+    object-fit: cover;
+}
+
+.full-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: coral;
+}

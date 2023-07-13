@@ -1,12 +1,45 @@
-.menu-container{
-    /*width: 100%;*/
-    /*padding: 5%;*/
-    background-color: #0077ff;
+
+.menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: rgba(199, 180, 255, 0.63); /* Lavender blush */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-container::after{
+    content: "";
+    background: url("https://img.freepik.com/free-photo/bubbly-pastel-holographic-gradient-background_53876-98397.jpg?w=2000");
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }
 
 .chat-img{
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #90c7ee;
+    background-color: #ffb6c1; /* Light pink */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #fff;
+}
+
+.menu-container:hover {
+    background-color: rgba(255, 228, 232, 0.51); /* Lighter shade of lavender blush */
+}
+
+.menu-container p {
+    margin-right: 10px;
+    color: rgba(0, 119, 255, 0.42); /* Deep pink */
+    font-size: 18px;
+    font-weight: bold;
 }

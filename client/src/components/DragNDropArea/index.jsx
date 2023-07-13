@@ -26,26 +26,18 @@ const DragNDropArea = (props) => {
     }
 
 
-    const imageReader = (source) => {
-        let reader = new FileReader();
-        reader.onloadend = () => {
-            props.sendImage(reader.result);
-        };
-        reader.readAsDataURL(source);
-    }
-
 
     const inputFileHandler = (event) => {
 //        imageReader(event.target.files[0]);
         props.sendImage(event.target.files[0]);
     }
 
-    const cn = cx({
+    const cn = cx(styles.container, {
         [styles.active]: drag
     });
 
     return (
-        <label
+        <div
             type="file"
             onDragOver={dragOver}
             onDragLeave={dragLeave}
@@ -60,9 +52,11 @@ const DragNDropArea = (props) => {
                 type="file"
                 name="image"
                 files={props.file}
-                onChange={inputFileHandler} />
+                onChange={inputFileHandler}
+            onClick={() => {
+               }}/>
 
-        </label>
+        </div>
     );
 }
 

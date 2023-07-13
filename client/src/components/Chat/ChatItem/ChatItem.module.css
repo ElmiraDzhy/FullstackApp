@@ -11,3 +11,17 @@
     background-color: lightblue;
     align-self: flex-end;
 }
+
+.image{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.body {
+    color: #e84ea2; /* Deep pink */
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 500;
+}

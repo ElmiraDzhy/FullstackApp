@@ -4,7 +4,7 @@ import DragNDropArea from '../DragNDropArea';
 import CONSTANTS from '../../constants';
 import { connect } from 'react-redux';
 import { updateUserRequest, logOut } from '../../actions/actionCreators';
-import styles from '../UserMenu/UserMenu.module.css';
+import styles from './UserMenuModal.module.css';
 
 const UserMenuModal = (props) => {
     const [image, setImage] = useState('');
@@ -59,15 +59,18 @@ const UserMenuModal = (props) => {
                                 type="text"
                                 defaultValue={props.user.firstName}
                                 ref={firstNameInputRef}
+                                className={styles['user-input']}
                             />
                             <input
                                 type="text"
                                 defaultValue={props.user.lastName}
                                 ref={lastNameInputRef}
+                                className={styles['user-input']}
+
                             />
                         </div>
-                        <button onClick={submitEdit}>Save</button>
-                        <button onClick={() => { setEdit(!editMode) }}>Cancel</button>
+                        <button className={styles.btn} onClick={submitEdit}>Save</button>
+                        <button className={styles.btn} onClick={() => { setEdit(!editMode) }}>Cancel</button>
                     </>)
                 }
 
@@ -78,8 +81,12 @@ const UserMenuModal = (props) => {
                             <h1>
                                 {props.user?.firstName} {props.user?.lastName}
                             </h1>
-                            <button onClick={() => { setEdit(!editMode) }}>Edit</button>
-                            <button onClick={props.logOut}>logOut</button>
+                            <div style={{display: 'flex', width: '100%', alignContent: 'center', justifyContent: 'center'}}>
+                                <button className={styles.btn} onClick={() => { setEdit(!editMode) }}>Edit</button>
+                                <button className={styles.btn} onClick={props.logOut}>logOut</button>
+
+                            </div>
+
                         </>
                     )
                 }

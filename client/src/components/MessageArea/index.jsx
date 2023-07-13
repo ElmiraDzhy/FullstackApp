@@ -3,6 +3,9 @@ import {connect} from "react-redux";
 import {addMessageRequest} from "../../actions/actionCreators";
 import styles from './MessageArea.module.css'
 import DragNDropArea from "../DragNDropArea";
+import Icon from '@mdi/react';
+import { mdiReceiptSend, mdiReceiptSendOutline } from '@mdi/js';
+
 
 function MessageArea (props) {
     const {currentChat, addMessageRequest} = props;
@@ -12,7 +15,7 @@ function MessageArea (props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        if(image || value){
+        if(image || value && currentChat){
             const newMessage = {
                 body: value,
                 chatId: currentChat._id,
@@ -20,6 +23,8 @@ function MessageArea (props) {
         }
     addMessageRequest(newMessage);
     setValue('');
+    setImage('');
+    previewRef.current.src = '';
 }
 
 
@@ -42,11 +47,19 @@ function MessageArea (props) {
 
         <div className={styles.container}>
             <form onSubmit={submitHandler}>
-                <DragNDropArea sendImage={setImage}>
-                <textarea name={'message'} className={styles['text-area']} value={value} onChange={changeHandler}/>
-                    {image && <img ref={previewRef} style={{width: "50px", height: "50px"} }/>}
-                </DragNDropArea>
-                <button type={'submit'} className={styles.btn}></button>
+                <div style={{display: 'flex'}}>
+                    <textarea name={'message'} className={styles['text-area']} value={value} onChange={changeHandler}/>
+                    <DragNDropArea sendImage={setImage} file={image}>
+                        {<img ref={previewRef} style={{width: "50px", height: "50px", margin: ' 0 20px'} }/>}
+                    </DragNDropArea>
+                </div>
+
+                <button type={'submit'} className={styles.btn}>
+                    {
+                        (value || image) ?  <Icon path={mdiReceiptSend} size={1} /> : <Icon path={mdiReceiptSendOutline} size={1} />
+                    }
+                </button>
+
             </form>
         </div>
 

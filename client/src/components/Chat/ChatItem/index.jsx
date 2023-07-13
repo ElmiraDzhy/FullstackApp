@@ -12,8 +12,9 @@ function ChatItem (props) {
 
     const imageMode =
        ( <div className={cn}>
-           <p>{body}</p>
-           <img src={imagePath} style={{width: "50px", height: "50px"}} alt={''}/>
+           <img className={styles.image} src={imagePath} alt={''}/>
+           <p className={styles.body}>{body}</p>
+
         </div>)
 
         const NONimageMode =
