@@ -18,7 +18,8 @@ const messageSchema = new Schema({
     },
     chatId: {
         type: Schema.Types.ObjectId,
-    }
+    },
+    imagePath: {type: String}
 
 });
 

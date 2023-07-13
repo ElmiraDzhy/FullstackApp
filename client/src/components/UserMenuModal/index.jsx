@@ -15,8 +15,7 @@ const UserMenuModal = (props) => {
     const submitData = () => {
         const firstName = firstNameInputRef.current.value;
         const lastName = lastNameInputRef.current.value;
-        console.log(firstName, lastName);
-        // це має призвести до відправки action
+
         props.updateUserRequest({
             firstName,
             lastName,
