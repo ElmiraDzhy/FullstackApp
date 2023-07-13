@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import styles from './UserMenuModal.module.css'
+import styles from './ModalWindow.module.css'
 function ModalWindow (props) {
     const [editMode, setMode] = useState(false);
     const closeHandler = (e) => {

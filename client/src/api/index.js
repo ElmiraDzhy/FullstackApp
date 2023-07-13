@@ -11,7 +11,11 @@ export const signIn = async (userData) => await httpClient.post('/users/sign-in'
 export const signUp = async (userData) => await httpClient.post('/users/sign-up', userData);
 export const getUserData = async () => await httpClient.get('/users/');
 export const deleteUser = async () => await httpClient.delete('/users/');
-export const updateUser = async (body) => await httpClient.patch('/users/', body);
+export const updateUser = async (body) => await httpClient.patch('/users/', body, {
+    headers: {
+        'Content-Type': "multipart/form-data"
+    }
+});
 export const logOut = async () => {
     localStorage.clear();
     history.replace('/');
