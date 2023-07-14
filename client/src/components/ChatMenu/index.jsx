@@ -3,11 +3,12 @@ import styles from './ChatMenu.module.css'
 import {connect} from "react-redux";
 import ModalWindow from "../ModalWindow";
 import CONSTANTS from "../../constants";
+import ChatMenuItem from "./ChatMenuItem";
 const ChatMenu = (props) => {
     const {currentChat} = props;
     const [modalOpen, setModalOpen] = useState(false);
     const imagePlaceholder = currentChat?.imagePath || CONSTANTS.CHAT_PLACEHOLDER;
-//todo: check is currentChat exist
+
     return (
         <div className={styles['menu-container']} onClick={() => currentChat && setModalOpen(!modalOpen)}>
             {currentChat &&
@@ -24,7 +25,7 @@ const ChatMenu = (props) => {
                                     <img className={styles['chat-img']} alt={''} src={imagePlaceholder}/>
                                     <p>{currentChat.name}</p>
                                     <ul>
-                                        {currentChat.members.map(m => <li>{m}</li>)}
+                                        {currentChat.members.map(m => <ChatMenuItem member={m}/>)}
                                     </ul>
                                 </>
                             )
