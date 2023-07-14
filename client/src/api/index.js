@@ -81,7 +81,8 @@ export const addMessage = async (body) => await httpClient.post(`/chats/${body.c
     }
 });
 
-export  const deleteMessage = async (messageId) => await httpClient.delete(`/chats/${messageId}`, {});
+export  const deleteMessage = async (messageId) => await httpClient.delete(`/chats/messages/${messageId}`, {});
+export  const deleteChat = async (chatId) => await httpClient.delete(`/chats/${chatId}`, {});
 export const getChatWithMembers = async () => await httpClient.get('/chats/users', {});
 export const getCurrentChat = async (chatId) => await httpClient.get(`/chats/${chatId}`, {});
 export const addUserToChat = async (chatId) => await httpClient.put(`/chats/${chatId}/`, {});

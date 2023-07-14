@@ -85,7 +85,7 @@ module.exports.getAllUserChats = async (req, res, next) => {
 module.exports.getChatWithMessages = async (req, res, next) => {
     try {
         const {params: {chatId}} = req;
-        const result = await Chat.findById(chatId).populate('messages')
+        const result = await Chat.findById(chatId).populate('messages');
         res.status(200).send({data: result});
 
     } catch (err) {
@@ -93,4 +93,20 @@ module.exports.getChatWithMessages = async (req, res, next) => {
 
     }
 }
-//todo (optional): delete user from chat and delete chat
+
+module.exports.deleteChat = async (req, res, next) => {
+    console.log('my log')
+
+    try{
+        const {params: {chatId}, payload: {userId}} = req;
+        const result = await Chat.findByIdAndDelete(chatId);
+        const userChats = await Chat.find({
+            members: userId,
+        });
+        console.log(userChats)
+        res.status(200).send({data: userChats});
+    }catch(err){
+        next(err);
+    }
+}
+//todo (optional): delete user from chat

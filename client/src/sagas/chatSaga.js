@@ -50,3 +50,13 @@ export function* createNewChatSaga (action){
         yield put(actionCreators.createNewChatError(err));
     }
 }
+
+export function* deleteChatSaga(action){
+    try {
+        const result = yield API.deleteChat(action.payload);
+        yield put(actionCreators.deleteChatSuccess(result.data.data));
+    } catch (err) {
+        const errorAction = actionCreators.deleteChatError(err);
+        yield put(errorAction);
+    }
+}

@@ -14,6 +14,7 @@ const errorReducer = createReducer(initialState, (builder) => {
         .addCase(ACTION_TYPES.SIGNUP_USER_ERROR, (state, action) => action.payload)
         .addCase(ACTION_TYPES.GET_USER_ERROR, (state, action) => action.payload)
         .addCase(ACTION_TYPES.UPDATE_USER_ERROR, (state, action) => action.payload)
+        .addCase(ACTION_TYPES.DELETE_CHAT_ERROR, (state, action) => action.payload)
         .addDefaultCase((state, action) => initialState);
 });
 

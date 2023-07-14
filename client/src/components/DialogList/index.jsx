@@ -1,16 +1,20 @@
 import React, {useRef, useState} from 'react';
-import { getCurrentChatRequest, createNewChatRequest} from "../../actions/actionCreators";
+import { getCurrentChatRequest, createNewChatRequest, deleteChatRequest} from "../../actions/actionCreators";
 import styles from './DialogList.module.css'
 import {connect} from "react-redux";
 import cx from 'classnames'
 import ModalWindow from "../ModalWindow";
 function DialogList (props) {
-    const {chatList,  getCurrentChatRequest, createNewChatRequest, user} = props;
+    const {chatList,  getCurrentChatRequest, createNewChatRequest, user, deleteChatRequest} = props;
     const [modalOpen, setModalOpen] = useState(false);
     const newChatName = useRef(null);
     const changeCurrentChat = (chatId) => {
         //generate action for changing currentChat
         getCurrentChatRequest(chatId);
+    }
+
+    const deleteChatHandler = (chatId) => {
+        deleteChatRequest(chatId)
     }
 
     const mapList = (chat) => {
@@ -20,6 +24,10 @@ function DialogList (props) {
         return (
             <li className={cn} key={chat._id} onClick={() => {changeCurrentChat(chat._id)}}>
                 {chat.name}
+                <button onClick={(e) => {
+                    e.stopPropagation();
+                    deleteChatHandler(chat._id)
+                }} className={styles.deletebtn}>delete</button>
             </li>);
     }
 
@@ -53,7 +61,8 @@ const mapStateToProps = ({chatList, currentChat, user}) => ({chatList, currentCh
 
 const mapDispatchToProps = {
     getCurrentChatRequest,
-    createNewChatRequest
+    createNewChatRequest,
+    deleteChatRequest
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DialogList);

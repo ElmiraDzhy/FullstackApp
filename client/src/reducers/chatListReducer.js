@@ -17,6 +17,9 @@ const chatListReducer = createReducer(initialState, (builder) => {
         .addCase(ACTION_TYPES.CREATE_NEW_CHAT_SUCCESS, (state, action) => {
             return action.payload
         })
+        .addCase(ACTION_TYPES.DELETE_CHAT_SUCCESS, (state, action) => {
+            return action.payload
+        })
         .addDefaultCase((state, action) => state)
 })
 

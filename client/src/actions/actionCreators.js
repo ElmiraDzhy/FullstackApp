@@ -44,3 +44,7 @@ export const createNewChatError = createAction(ACTION_TYPES.CREATE_NEW_CHAT_ERRO
 export const deleteMessageRequest = createAction(ACTION_TYPES.DELETE_MESSAGE_REQUEST);
 export const deleteMessageSuccess = createAction(ACTION_TYPES.DELETE_MESSAGE_SUCCESS);
 export const deleteMessageError = createAction(ACTION_TYPES.DELETE_MESSAGE_ERROR);
+
+export const deleteChatRequest = createAction(ACTION_TYPES.DELETE_CHAT_REQUEST);
+export const deleteChatSuccess = createAction(ACTION_TYPES.DELETE_CHAT_SUCCESS);
+export const deleteChatError = createAction(ACTION_TYPES.DELETE_CHAT_ERROR);

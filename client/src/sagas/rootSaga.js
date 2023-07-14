@@ -2,7 +2,7 @@ import {takeLatest} from 'redux-saga/effects';
 import ACTION_TYPES from './../actions/types';
 import {
     addMessageSaga,
-    createNewChatSaga,
+    createNewChatSaga, deleteChatSaga,
     deleteMessageSaga,
     getAllChatsSaga,
     getCurrentChatWithMessages
@@ -20,6 +20,7 @@ function* rootSaga () {
     //chats sagas
     yield takeLatest(ACTION_TYPES.ADD_MESSAGE_REQUEST, addMessageSaga);
     yield takeLatest(ACTION_TYPES.DELETE_MESSAGE_REQUEST, deleteMessageSaga);
+    yield takeLatest(ACTION_TYPES.DELETE_CHAT_REQUEST, deleteChatSaga);
     yield takeLatest(ACTION_TYPES.GET_ALL_USER_CHATS_REQUEST, getAllChatsSaga);
     yield takeLatest(ACTION_TYPES.GET_CURRENT_CHAT_REQUEST, getCurrentChatWithMessages);
     yield takeLatest(ACTION_TYPES.CREATE_NEW_CHAT_REQUEST, createNewChatSaga);
