@@ -53,6 +53,21 @@ module.exports.addMessage = async (req, res, next) => {
     }
 }
 
+module.exports.deleteMessage = async (req, res, next) => {
+    try {
+        const {params: {messageId}} = req;
+        const deletedMessageInstance = await Message.findByIdAndDelete(messageId);
+        const updatedChat = await Chat.findOneAndUpdate(
+            { messages: messageId },
+            { $pull: { messages: messageId } },
+            { new: true }
+        ).populate('messages');
+        res.status(201).send({data: updatedChat})
+    } catch (err) {
+        next(err);
+    }
+}
+
 module.exports.getAllUserChats = async (req, res, next) => {
     try {
         const {payload: {userId}} = req;

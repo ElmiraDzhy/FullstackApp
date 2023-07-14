@@ -7,7 +7,7 @@ const initialState = {
     errors: null,
 
 }
-export function chat (state=initialState, action){
+export function chat (state= initialState, action){
     console.log(action)
     switch (action.type) {
         //
@@ -33,6 +33,7 @@ export function chat (state=initialState, action){
         case ACTION_TYPES.ADD_MESSAGE_ERROR:
         case ACTION_TYPES.CREATE_NEW_CHAT_ERROR:
         case ACTION_TYPES.GET_ALL_USER_CHATS_ERROR:
+        case ACTION_TYPES.DELETE_MESSAGE_ERROR:
         case ACTION_TYPES.GET_CURRENT_CHAT_ERROR: {
             return {
                 ...state,
@@ -48,11 +49,22 @@ export function chat (state=initialState, action){
                 isFetching: false
             }
         }
-        //
-        case ACTION_TYPES.GET_CURRENT_CHAT_SUCCESS: {
+      //
+        case ACTION_TYPES.GET_CURRENT_CHAT_SUCCESS:
+        {
             return{
                 ...state,
                 currentChat: action.data
+            }
+        }
+        //
+        case ACTION_TYPES.DELETE_MESSAGE_SUCCESS:{
+            return {
+                ...state,
+                currentChat: {
+                    ...state.currentChat,
+                    messages: action.data.messages
+                }
             }
         }
         //

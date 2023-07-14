@@ -14,6 +14,16 @@ export function* addMessageSaga (action) {
     }
 }
 
+export function* deleteMessageSaga (action) {
+    try {
+        const result = yield API.deleteMessage(action.payload);
+        yield put(actionCreators.deleteMessageSuccess(result.data.data));
+    } catch (err) {
+        const errorAction = actionCreators.deleteMessageError(err);
+        yield put(errorAction);
+    }
+}
+
 export function* getAllChatsSaga (action){
     try{
         const {data: {data}} = yield API.getUserChats();

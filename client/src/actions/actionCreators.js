@@ -119,3 +119,16 @@ export const createNewChatError = (error) => ({
     type: ACTION_TYPES.CREATE_NEW_CHAT_ERROR,
     error
 });
+
+export const deleteMessageRequest = (payload) => ({
+    type: ACTION_TYPES.DELETE_MESSAGE_REQUEST,
+    payload,
+});
+export const deleteMessageSuccess = (data) => ({
+    type: ACTION_TYPES.DELETE_MESSAGE_SUCCESS,
+    data,
+});
+export const deleteMessageError = (error) => ({
+    type: ACTION_TYPES.DELETE_MESSAGE_ERROR,
+    error,
+});

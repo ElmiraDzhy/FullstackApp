@@ -11,5 +11,5 @@ chatRouter.get('/:chatId/users', checkToken, ChatController.getChatWithUsers);
 chatRouter.get('/all', checkToken, ChatController.getAllUserChats);
 chatRouter.put('/:chatId/', checkToken, ChatController.addUserToChat);
 chatRouter.get('/:chatId', checkToken, ChatController.getChatWithMessages);
-
+chatRouter.delete('/:messageId', checkToken, ChatController.deleteMessage)
 module.exports = chatRouter;
