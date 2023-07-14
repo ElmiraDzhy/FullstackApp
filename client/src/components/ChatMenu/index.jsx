@@ -7,9 +7,9 @@ const ChatMenu = (props) => {
     const {currentChat} = props;
     const [modalOpen, setModalOpen] = useState(false);
     const imagePlaceholder = currentChat?.imagePath || CONSTANTS.CHAT_PLACEHOLDER;
-
+//todo: check is currentChat exist
     return (
-        <div className={styles['menu-container']} onClick={() => setModalOpen(!modalOpen)}>
+        <div className={styles['menu-container']} onClick={() => currentChat && setModalOpen(!modalOpen)}>
             {currentChat &&
                 <>
                     <p>{currentChat.name}</p>
@@ -35,5 +35,5 @@ const ChatMenu = (props) => {
         </div>
     )
 }
-const mapStateToProps = ({chat: {currentChat}}) => ({currentChat});
+const mapStateToProps = ({currentChat}) => ({currentChat});
 export default connect(mapStateToProps, {})(ChatMenu);

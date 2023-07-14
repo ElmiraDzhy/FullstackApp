@@ -17,5 +17,5 @@ function Chat (props) {
         </div>
     )
 }
-const mapStateToProps =({chat: {currentChat}}) => ({currentChat});
+const mapStateToProps =({currentChat}) => ({currentChat});
 export default connect(mapStateToProps, {deleteMessageRequest})(Chat);

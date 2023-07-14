@@ -9,15 +9,19 @@ import UserMenu from "../../components/UserMenu";
 import ChatMenu from "../../components/ChatMenu";
 
 function Dashboard (props) {
-
     //if we reload page and haven't user object but in local storage is tokens - make request on get user object
+    const {user, currentChat} = props;
+    //todo: look on the useEffect: may be here is a problem:
     useEffect(()=> {
         if(!props.user){
             props.getUserDataRequest();
+            // props.getAllUserChatRequest()
+
         }else{
+
             props.getAllUserChatRequest()
         }
-    }, []);
+    }, [user, currentChat]);
     //todo fix styles
     return (
         <>
@@ -33,7 +37,7 @@ function Dashboard (props) {
         </>
     );
 }
-const mapStateToProps = ({user: {user}}) => ({user});
+const mapStateToProps = ({user, currentChat}) => ({user, currentChat});
 export default connect(mapStateToProps,{
     getUserDataRequest,
     getAllUserChatRequest

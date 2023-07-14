@@ -26,7 +26,7 @@ const UserMenu = (props) => {
     );
 }
 
-const mapStateToProps = ({ user: {user} }) => ({ user })
+const mapStateToProps = ({ user }) => ({ user })
 
 const mapDispatchToProps = {
     updateUserRequest,

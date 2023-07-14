@@ -28,5 +28,5 @@ return (
 
 )
 }
-const mapStateToProps = ({user: {user}}) => ({user});
+const mapStateToProps = ({user}) => ({user});
 export default connect(mapStateToProps)(ChatItem);

@@ -1,134 +1,46 @@
 import ACTION_TYPES from './types';
+import {createAction} from "@reduxjs/toolkit";
 
 //
 //USERS
 //
-export const loginUserRequest = (payload) => ({
-    type: ACTION_TYPES.LOGIN_USER_REQUEST,
-    payload
-});
+export const loginUserRequest = createAction(ACTION_TYPES.LOGIN_USER_REQUEST);
+export const loginUserSuccess = createAction(ACTION_TYPES.LOGIN_USER_SUCCESS);
+export const loginUserError = createAction(ACTION_TYPES.LOGIN_USER_ERROR);
 
-export const loginUserSuccess = (data) => ({
-    type: ACTION_TYPES.LOGIN_USER_SUCCESS,
-    data
-});
+export const signUpUserRequest = createAction(ACTION_TYPES.SIGNUP_USER_REQUEST);
+export const signUpUserSuccess = createAction(ACTION_TYPES.SIGNUP_USER_SUCCESS);
+export const signUpUserError = createAction(ACTION_TYPES.SIGNUP_USER_ERROR);
 
-export const loginUserError = (error) => ({
-    type: ACTION_TYPES.LOGIN_USER_ERROR,
-    error
-});
+export const getUserDataRequest = createAction(ACTION_TYPES.GET_USER_REQUEST);
+export const getUserDataSuccess = createAction(ACTION_TYPES.GET_USER_SUCCESS);
+export const getUserDataError = createAction(ACTION_TYPES.GET_USER_ERROR);
 
-export const signUpUserRequest = (payload) => ({
-    type: ACTION_TYPES.SIGNUP_USER_REQUEST,
-    payload
-});
+export const updateUserRequest = createAction(ACTION_TYPES.UPDATE_USER_REQUEST);
+export const updateUserSuccess = createAction(ACTION_TYPES.UPDATE_USER_SUCCESS);
+export const updateUserError = createAction(ACTION_TYPES.UPDATE_USER_ERROR);
 
-export const signUpUserSuccess = (data) => ({
-    type: ACTION_TYPES.SIGNUP_USER_SUCCESS,
-    data
-});
-
-export const signUpUserError= (error) => ({
-    type: ACTION_TYPES.SIGNUP_USER_ERROR,
-    error
-});
-
-export const getUserDataRequest = (payload) => ({
-    type: ACTION_TYPES.GET_USER_REQUEST,
-    payload
-})
-export const getUserDataSuccess = (data) => ({
-    type: ACTION_TYPES.GET_USER_SUCCESS,
-    data
-})
-export const getUserDataError = (error) => ({
-    type: ACTION_TYPES.GET_USER_ERROR,
-    error
-})
-
-export const updateUserRequest = (payload) => ({
-    type: ACTION_TYPES.UPDATE_USER_REQUEST,
-    payload
-})
-export const updateUserSuccess = (data) => ({
-    type: ACTION_TYPES.UPDATE_USER_SUCCESS,
-    data
-})
-export const updateUserError = (error) => ({
-    type: ACTION_TYPES.UPDATE_USER_REQUEST,
-    error
-})
-
-export const logOut  = () => ({
-    type: ACTION_TYPES.LOGOUT,
-})
+export const logOut  = createAction(ACTION_TYPES.LOGOUT);
 
 //
 //CHATS
 //
-export const addMessageRequest = (payload) => ({
-    type: ACTION_TYPES.ADD_MESSAGE_REQUEST,
-    payload
-});
+export const addMessageRequest = createAction(ACTION_TYPES.ADD_MESSAGE_REQUEST);
+export const addMessageSuccess = createAction(ACTION_TYPES.ADD_MESSAGE_SUCCESS);
+export const addMessageError = createAction(ACTION_TYPES.ADD_MESSAGE_ERROR);
 
-export const addMessageSuccess = (data) => ({
-    type: ACTION_TYPES.ADD_MESSAGE_SUCCESS,
-    data
-});
+export const getAllUserChatRequest = createAction(ACTION_TYPES.GET_ALL_USER_CHATS_REQUEST);
+export const getAllUserChatSuccess = createAction(ACTION_TYPES.GET_ALL_USER_CHATS_SUCCESS);
+export const getAllUserChatError = createAction(ACTION_TYPES.GET_ALL_USER_CHATS_ERROR);
 
-export const addMessageError = (error) => ({
-    type: ACTION_TYPES.ADD_MESSAGE_ERROR,
-    error
-});
+export const getCurrentChatRequest = createAction(ACTION_TYPES.GET_CURRENT_CHAT_REQUEST);
+export const getCurrentChatSuccess = createAction(ACTION_TYPES.GET_CURRENT_CHAT_SUCCESS);
+export const getCurrentChatError = createAction(ACTION_TYPES.GET_CURRENT_CHAT_ERROR);
 
-export const getAllUserChatRequest = (payload) => ({
-    type: ACTION_TYPES.GET_ALL_USER_CHATS_REQUEST,
-    payload
-});
-export const getAllUserChatSuccess = (data) => ({
-    type: ACTION_TYPES.GET_ALL_USER_CHATS_SUCCESS,
-    data
-});
-export const getAllUserChatError = (error) => ({
-    type: ACTION_TYPES.GET_ALL_USER_CHATS_ERROR,
-    error
-});
+export const createNewChatRequest = createAction(ACTION_TYPES.CREATE_NEW_CHAT_REQUEST);
+export const createNewChatSuccess = createAction(ACTION_TYPES.CREATE_NEW_CHAT_SUCCESS);
+export const createNewChatError = createAction(ACTION_TYPES.CREATE_NEW_CHAT_ERROR);
 
-export const getCurrentChatRequest = (payload) => ({
-    type: ACTION_TYPES.GET_CURRENT_CHAT_REQUEST,
-    payload
-});
-export const getCurrentChatSuccess = (data) => ({
-    type: ACTION_TYPES.GET_CURRENT_CHAT_SUCCESS,
-    data
-});
-export const getCurrentChatError = (error) => ({
-    type: ACTION_TYPES.GET_CURRENT_CHAT_ERROR,
-    error
-});
-
-export const createNewChatRequest = (payload) => ({
-    type: ACTION_TYPES.CREATE_NEW_CHAT_REQUEST,
-    payload,
-});
-export const createNewChatSuccess = (data) => ({
-    type: ACTION_TYPES.CREATE_NEW_CHAT_SUCCESS,
-    data,
-});
-export const createNewChatError = (error) => ({
-    type: ACTION_TYPES.CREATE_NEW_CHAT_ERROR,
-    error
-});
-
-export const deleteMessageRequest = (payload) => ({
-    type: ACTION_TYPES.DELETE_MESSAGE_REQUEST,
-    payload,
-});
-export const deleteMessageSuccess = (data) => ({
-    type: ACTION_TYPES.DELETE_MESSAGE_SUCCESS,
-    data,
-});
-export const deleteMessageError = (error) => ({
-    type: ACTION_TYPES.DELETE_MESSAGE_ERROR,
-    error,
-});
+export const deleteMessageRequest = createAction(ACTION_TYPES.DELETE_MESSAGE_REQUEST);
+export const deleteMessageSuccess = createAction(ACTION_TYPES.DELETE_MESSAGE_SUCCESS);
+export const deleteMessageError = createAction(ACTION_TYPES.DELETE_MESSAGE_ERROR);

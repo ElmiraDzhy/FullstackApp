@@ -1,58 +1,26 @@
 import ACTION_TYPES from "../actions/types";
+import {createReducer} from "@reduxjs/toolkit";
 
-const initialState = {
-    user: null,
-    isFetching: false,
-    errors: null,
-}
+const initialState = null;
 
+const userReducer = createReducer(initialState, (builder)=> {
+    builder
+        .addCase(ACTION_TYPES.LOGIN_USER_SUCCESS, (state, action) => {
+            return action.payload
+        })
+        .addCase(ACTION_TYPES.SIGNUP_USER_SUCCESS, (state, action) => {
+            return action.payload
+        })
+        .addCase(ACTION_TYPES.UPDATE_USER_SUCCESS, (state, action) => {
+            return action.payload
+        })
+        .addCase(ACTION_TYPES.GET_USER_SUCCESS, (state, action) => {
+            return action.payload.user
+        })
+        .addCase(ACTION_TYPES.LOGOUT, (state, action) => {
+            return initialState
+        })
+        .addDefaultCase((state, action) => state);
+})
 
-export function user (state = initialState, action){
-    console.log(action)
-    switch (action.type) {
-        //
-        case ACTION_TYPES.GET_USER_REQUEST:{
-            return {
-                ...state,
-                isFetching: true
-            }
-        }
-        //
-        case ACTION_TYPES.LOGIN_USER_SUCCESS:
-        case ACTION_TYPES.UPDATE_USER_SUCCESS:
-        case ACTION_TYPES.SIGNUP_USER_SUCCESS: {
-            return {
-                ...state,
-                user: action.data
-            }
-        }
-        //
-        case ACTION_TYPES.GET_USER_SUCCESS:{
-            return {
-                ...state,
-                user: action.data.user,
-                chatList: action.data.chatList
-            }
-        }
-        //
-        case ACTION_TYPES.LOGOUT:{
-            return {
-                ...initialState
-            }
-        }
-        //
-        case ACTION_TYPES.LOGIN_USER_ERROR :
-        case ACTION_TYPES.SIGNUP_USER_ERROR:
-        case ACTION_TYPES.GET_USER_ERROR:
-        case ACTION_TYPES.UPDATE_USER_ERROR:{
-            return {
-                ...state,
-                errors: action.error
-            }
-        }
-        //
-        default: {
-            return {...state}
-        }
-    }
-}
+export default userReducer;

@@ -49,7 +49,7 @@ function DialogList (props) {
         </div>
     )
 }
-const mapStateToProps = ({chat: {chatList, currentChat}, user: {user}}) => ({chatList, currentChat, user});
+const mapStateToProps = ({chatList, currentChat, user}) => ({chatList, currentChat, user});
 
 const mapDispatchToProps = {
     getCurrentChatRequest,
