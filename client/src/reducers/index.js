@@ -4,6 +4,7 @@ import userReducer from './userReducer';
 import chatListReducer from "./chatListReducer";
 import fetchingReducer from './fetchingReducer';
 import errorReducer from './errorReducer';
+import notificationReducer from "./notificationReducer";
 
 
 const rootReducer = combineReducers({
@@ -12,5 +13,6 @@ const rootReducer = combineReducers({
     chatList: chatListReducer,
     isFetching: fetchingReducer,
     error: errorReducer,
+    notification: notificationReducer
 });
 export default rootReducer;

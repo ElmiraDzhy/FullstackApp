@@ -3,6 +3,7 @@ import styles from './ModalWindow.module.css'
 function ModalWindow (props) {
     const [editMode, setMode] = useState(false);
     const closeHandler = (e) => {
+        e.stopPropagation()
         if(e.currentTarget === e.target){
             props.close();
         }

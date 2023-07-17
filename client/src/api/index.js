@@ -1,9 +1,20 @@
 import axios from "axios";
 import history from "../history";
+import io from 'socket.io-client';
+import ACTION_TYPES from '../actions/types';
+import store from '../store'
 
 const httpClient = axios.create({
     baseURL: 'http://localhost:5000/api',
 }); //create instance
+
+const socket = io(`ws://localhost:5000`);
+socket.on(ACTION_TYPES.NEW_NOTIFICATION, (payload) => {
+    store.dispatch({
+        type: ACTION_TYPES.NEW_NOTIFICATION,
+        payload
+    })
+})
 
 // auth api
 
