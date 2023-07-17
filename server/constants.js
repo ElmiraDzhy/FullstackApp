@@ -4,4 +4,8 @@ module.exports = {
     ACCESS_TIME: 60,
     REFRESH_TIME: 60 * 60,
     IMAGE_STATIC_PATH: 'public/images/',
+
+    WS_MSG_TYPE: {
+        NEW_NOTIFICATION: 'NEW_NOTIFICATION'
+    }
 }
